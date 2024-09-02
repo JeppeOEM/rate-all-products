@@ -22,7 +22,7 @@ class ImportProducts extends Command
      *
      * @var string
      */
-    protected $description = 'Load product files from Storage/unimported, provide a filename or select from folder. Use --delimiter= to specify non default CSV delimiter.';
+    protected $description = 'Load product files from Storage/unimported, provide a filename. Use --delimiter= to specify non default CSV delimiter.';
 
     /**
      * Execute the console command.
@@ -31,8 +31,9 @@ class ImportProducts extends Command
     {
         $delimiter = $this->option('delimiter');
         $file = $this->argument('file');
-        $file = 'unimported/' . $file;
+        
         if ($file) {
+        $file = 'unimported/' . $file;
             if (!Storage::exists($file)) {
                 $this->error("File $file does not exist.");
                 return;

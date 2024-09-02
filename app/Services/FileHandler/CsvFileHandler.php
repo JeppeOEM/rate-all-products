@@ -37,7 +37,7 @@ class CsvFileHandler extends FileHandler implements FileHandlerInterface
         $headerColumns = $header->count();
         foreach ($rows as $row) {
             if (count($row) !== $headerColumns) {
-                throw new Exception("The number of columns in the header does not match the number of columns in the row.");
+                throw new Exception("The number of columns in the csv header does not match the number of columns in the row.");
             }
         }
 
