@@ -16,7 +16,3 @@ Route::get('/filelist', function () {
     ]);
 });
 
-// Route::post('/filehandler', [FileHandlerController::class, 'handleFile']); {
-//     return inertia('Home');
-// });
-

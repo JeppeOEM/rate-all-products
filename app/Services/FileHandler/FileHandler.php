@@ -3,8 +3,9 @@
 namespace App\Services\FileHandler;
 
 use Illuminate\Support\Facades\Storage;
+use Exception;
 
-abstract class FileHandler {
+class FileHandler {
     
     public function getArchivedList() : array {
         $allFiles = Storage::allFiles('/archive');
@@ -14,15 +15,16 @@ abstract class FileHandler {
         $allFiles = Storage::allFiles('/unimported');
         return $allFiles;
     }
-    protected function moveFile($filepath) : bool {
-        if (strpos($filepath, 'unimported/') === false) {
-            throw new \Exception("The file path does not contain '/unimported/': $filepath");
+    protected function moveFile(string $filepath) : bool {
+        $folder = 'unimported/';
+        if (strpos($filepath, $folder) === false) {
+            throw new Exception("The file path does not contain '/unimported/': $filepath");
         }
-        $newFilepath = str_replace('unimported/', 'archive/', $filepath);
+        $timestamp=time();
+        $fileName = str_replace($folder,'', $filepath);
+        $newFilepath = "/archive/" . $timestamp . '_' . $fileName;
         return Storage::move($filepath, $newFilepath);
     }
    
-    abstract public function parseFile($filename);
-
   }
 

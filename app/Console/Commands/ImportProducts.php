@@ -22,7 +22,7 @@ class ImportProducts extends Command
      *
      * @var string
      */
-    protected $description = 'Load product files from Storage, provide filename or select from unimported folder. Use --delimiter= to specify CSV delimiter.';
+    protected $description = 'Load product files from Storage/unimported, provide a filename or select from folder. Use --delimiter= to specify non default CSV delimiter.';
 
     /**
      * Execute the console command.
@@ -31,6 +31,7 @@ class ImportProducts extends Command
     {
         $delimiter = $this->option('delimiter');
         $file = $this->argument('file');
+        $file = 'unimported/' . $file;
         if ($file) {
             if (!Storage::exists($file)) {
                 $this->error("File $file does not exist.");
@@ -52,7 +53,7 @@ class ImportProducts extends Command
             $this->info("You have selected this delimiter: $delimiter");
         }
         if ($fileHandler) {
-            $fileHandler->parseFile($file);
+            dd($fileHandler->parseFile($file));
         } else {
             $this->error('Unsupported file type: ' . $mimeType);
         }
@@ -64,6 +65,7 @@ class ImportProducts extends Command
             case 'text/xml':
                 return new XmlFileHandler();
             case 'text/csv':
+                echo $delimiter;
                 return $delimiter ? new CsvFileHandler($delimiter) : new CsvFileHandler();
             case 'application/json':
                 return new JsonFileHandler();
