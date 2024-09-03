@@ -11,12 +11,9 @@ Route::get('/auth/create', function () {
     return inertia('Auth/Create');
 });
 
-
-
-Route::resource('users', UserController::class);
-
-// return redirect('/filelist');
-// });
+Route::resource('users', UserController::class)->only([
+    'store', 'update','destroy'
+]);
 
 Route::post('/auth/login', function () {
     return inertia('Auth/Login');
