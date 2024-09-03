@@ -31,9 +31,9 @@ class ImportProducts extends Command
     {
         $delimiter = $this->option('delimiter');
         $file = $this->argument('file');
-        
+
         if ($file) {
-        $file = 'unimported/' . $file;
+            $file = 'unimported/' . $file;
             if (!Storage::exists($file)) {
                 $this->error("File $file does not exist.");
                 return;
@@ -64,10 +64,10 @@ class ImportProducts extends Command
     {
         switch ($mimetype) {
             case 'text/xml':
+            case 'application/xml':
                 return new XmlFileHandler();
             case 'text/csv':
-                echo $delimiter;
-                return $delimiter ? new CsvFileHandler($delimiter) : new CsvFileHandler();
+                return new CsvFileHandler($delimiter);
             case 'application/json':
                 return new JsonFileHandler();
             default:
