@@ -15,7 +15,7 @@ Route::resource('users', UserController::class)->only([
     'store', 'update','destroy'
 ]);
 
-Route::post('/auth/login', function () {
+Route::get('/auth/login', function () {
     return inertia('Auth/Login');
     });
 

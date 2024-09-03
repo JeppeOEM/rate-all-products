@@ -10,7 +10,7 @@
               <Link href="/">Home</Link>
               <Link href="/auth/login">Login</Link>
               <Link href="/auth/logout">Logout</Link>
-              <Link href="/users/create">Register</Link>
+              <Link href="/auth/create">Register</Link>
             </nav>
           </div>
     
