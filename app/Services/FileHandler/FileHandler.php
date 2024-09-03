@@ -15,7 +15,7 @@ class FileHandler {
         $allFiles = Storage::allFiles('/unimported');
         return $allFiles;
     }
-    protected function moveFile(string $filepath) : bool {
+    protected function moveFile(string $filepath) : void {
         $folder = 'unimported/';
         if (strpos($filepath, $folder) === false) {
             throw new Exception("The file path does not contain '/unimported/': $filepath");
@@ -23,7 +23,7 @@ class FileHandler {
         $timestamp=time();
         $fileName = str_replace($folder,'', $filepath);
         $newFilepath = "/archive/" . $timestamp . '_' . $fileName;
-        return Storage::move($filepath, $newFilepath);
+        Storage::move($filepath, $newFilepath);
     }
    
   }
