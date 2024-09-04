@@ -6,14 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('sku')->unique()->nullable();
+            $table->string('category', 12 ); // 'simple', overvariant, undervariant
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->string('vendor');
+            $table->text('description')->nullable();
+            $table->decimal('price');
+            $table->decimal('cost_price')->nullable();
+            $table->decimal('discount')->nullable();
+            $table->string('currency', 60);
+            $table->boolean('visible')->default(true);
         });
     }
 
