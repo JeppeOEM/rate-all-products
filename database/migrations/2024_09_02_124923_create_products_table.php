@@ -11,15 +11,16 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('sku')->unique()->nullable();
-            $table->string('category', 12 ); // 'simple', overvariant, undervariant
+            $table->enum('product_type', ['simple', 'parent', 'subcategory']);
             $table->unsignedBigInteger('parent_id')->nullable();
-            $table->string('vendor');
+            $table->unsignedBigInteger('shop_id')->nullable();
             $table->text('description')->nullable();
-            $table->decimal('price');
-            $table->decimal('cost_price')->nullable();
+            $table->decimal('price', 10, 2);
+            $table->decimal('cost_price',10, 2)->nullable();
             $table->decimal('discount')->nullable();
-            $table->string('currency', 60);
-            $table->boolean('visible')->default(true);
+            $table->string('currency', 30);
+            $table->boolean('visible');
+            $table->timestamps(); # created_at and updated_at columns
         });
     }
 
