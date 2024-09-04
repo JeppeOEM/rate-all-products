@@ -12,9 +12,12 @@ class CsvFileHandler extends FileHandler implements FileHandlerInterface
 {
     private $delimiter;
 
-    public function __construct(string $delimiter = ';')
+    public function __construct(string $delimiter = null)
     {
-        if (strlen($delimiter) !== 1) {
+        if (is_null($delimiter)) {
+            $delimiter = ';';
+        }
+        if  (strlen($delimiter) !== 1) {
             echo $delimiter;
             throw new ValidationException("Delimiter must be a single character.");
         }
@@ -40,13 +43,9 @@ class CsvFileHandler extends FileHandler implements FileHandlerInterface
                 throw new Exception("The number of columns in the csv header does not match the number of columns in the row.");
             }
         }
-
-        $result = collect([
-            'rows' => $rows,
-            'header' => $header
-        ]);
         $this->moveFile($file);
-        return $result; 
+
+        return $rows; 
         }
             catch (Exception $e) {
             echo "An error occurred while parsing the CSV file: " . $e->getMessage();
