@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Services\FileHandler\FileHandler;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 
@@ -44,7 +45,9 @@ class DownloadProducts extends Command
 
         if ($fileHandler) {
             $rows = $fileHandler->parseFile($file);
-            $fileHandler->saveToDb($rows);
+            if($fileHandler->saveToDb($rows)){
+                $fileHandler->moveFile($file);
+            };
         } else {
             $this->error('Unsupported file type: ' . $mimeType);
         }

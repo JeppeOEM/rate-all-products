@@ -12,7 +12,6 @@ use App\Models\Product;
 
 class XmlFileHandlerSoapPrefix extends FileHandler implements FileHandlerInterface
 {
-
     public function parseFile(string $file): Collection
     {
         $xml = Storage::get($file);
@@ -33,7 +32,7 @@ class XmlFileHandlerSoapPrefix extends FileHandler implements FileHandlerInterfa
         }
     }
 
-    public function saveToDb(Collection $rows): void
+    public function saveToDb(Collection $rows): bool
     {
 
         Log::Info("New saving files query initialized");
@@ -59,7 +58,6 @@ class XmlFileHandlerSoapPrefix extends FileHandler implements FileHandlerInterfa
                 ]);
                 $insertedCount++;
             } catch (Exception $e) {
-                echo "An error occurred while saving a product: " . $e->getMessage();
                 $failedCount++;
                 Log::error('Failed to save product', [
                     'error' => $e->getMessage(),
@@ -71,12 +69,13 @@ class XmlFileHandlerSoapPrefix extends FileHandler implements FileHandlerInterfa
         echo "\nInserted $insertedCount products.\n";
         if ($failedCount > 0) {
             echo "Failed to insert $failedCount products.\n";
-        }
+        } 
+        
         
         Log::info('Database save summary', [
             'inserted' => $insertedCount,
             'failed' => $failedCount
         ]);
-
+        return $failedCount === 0;
     }
 }
