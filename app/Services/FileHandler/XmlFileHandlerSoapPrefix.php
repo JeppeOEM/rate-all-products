@@ -29,6 +29,8 @@ class XmlFileHandlerSoapPrefix extends FileHandler implements FileHandlerInterfa
                 return 'simple';
             case 'false':
                 return 'subcategory';
+            default:
+                return null;
         }
     }
 
@@ -41,38 +43,35 @@ class XmlFileHandlerSoapPrefix extends FileHandler implements FileHandlerInterfa
 
         foreach ($rows['Vareoversigt'] as $row) {
             try {
-                Product::create([
+                $product = Product::firstOrNew([
                     'sku' => $row['Key'],
-                    'no' => $row['No'],
+                    'no' => $row['No']
+                ]);
+
+                $product->fill([
                     'product_type' => $this->productType($row['Own_Item']),
                     'parent_id' => null,
-                    'shop_id' => $row['Vendor_No'],
-                    'description' => $row['Description'],
-                    'price' => $row['Unit_Price'],
-                    'cost_price' => $row['Unit_Cost'],
+                    'shop_id' => $row['Vendor_No'] ?? null,
+                    'description' => $row['Description'] ?? null,
+                    'price' => $row['Unit_Price'] ?? null,
+                    'cost_price' => $row['Unit_Cost'] ?? null,
                     'discount' => $row['Discount'] ?? 0,
                     'currency' => $row['Currency'] ?? 'DKK',
                     'visible' => $row['Visible_on_Web'] ?? false,
-                    'created_at' => now(),
-                    'updated_at' => now(),
                 ]);
+
+                $product->save();
                 $insertedCount++;
             } catch (Exception $e) {
-
-                $failedCount++;
+                echo "An error occurred while saving the product: " . $e->getMessage();
                 Log::error('Failed to save product', [
                     'error' => $e->getMessage(),
                     'product' => $row
                 ]);
+                $failedCount++;
             }
         }
 
-        echo "\nInserted $insertedCount products.\n";
-        if ($failedCount > 0) {
-            echo "Failed to insert $failedCount products.\n";
-        } 
-        
-        
         Log::info('Database save summary', [
             'inserted' => $insertedCount,
             'failed' => $failedCount
