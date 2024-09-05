@@ -12,16 +12,16 @@ return new class extends Migration
             $table->id();
             $table->string('sku')->unique();
             $table->string('no')->unique();
-            $table->enum('product_type', ['simple', 'parent', 'subcategory']);
+            $table->enum('product_type', ['simple', 'parent', 'subcategory'])->default('simple');
             $table->unsignedBigInteger('parent_id')->nullable();
-            $table->unsignedBigInteger('shop_id');
+            $table->unsignedBigInteger('shop_id')->nullable();
             $table->text('description');
             $table->decimal('price', 10, 2);
             $table->decimal('cost_price',10, 2)->nullable();
             $table->decimal('discount')->nullable();
             $table->string('currency', 30);
             $table->boolean('visible');
-            $table->timestamps(); # created_at and updated_at columns
+            $table->timestamps(); 
             $table->foreign('parent_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
