@@ -19,4 +19,8 @@ class JsonFileHandler extends FileHandler implements FileHandlerInterface {
             echo "An error occurred while parsing the JSON file: " . $e->getMessage();
         }
     }
+
+    public function saveToDb(Collection $rows): bool {
+        return false;
+    }
 }
