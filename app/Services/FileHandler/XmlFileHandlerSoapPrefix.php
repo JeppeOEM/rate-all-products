@@ -58,6 +58,7 @@ class XmlFileHandlerSoapPrefix extends FileHandler implements FileHandlerInterfa
                 ]);
                 $insertedCount++;
             } catch (Exception $e) {
+                echo "An error occurred while saving a product: " . $e->getMessage();
                 $failedCount++;
                 Log::error('Failed to save product', [
                     'error' => $e->getMessage(),
