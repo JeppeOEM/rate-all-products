@@ -15,7 +15,7 @@ class FileHandler {
         $allFiles = Storage::allFiles('/unimported');
         return $allFiles;
     }
-    protected function moveFile(string $filepath) : void {
+    public function moveFile(string $filepath) : void {
         $folder = 'unimported/';
         if (strpos($filepath, $folder) === false) {
             throw new Exception("The file path does not contain '/unimported/': $filepath");
