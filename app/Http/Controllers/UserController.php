@@ -10,23 +10,24 @@ use Illuminate\Support\Facades\Redirect;
 class UserController extends Controller
 
 {
-
+ 
 
     public function store(Request $request)
     {
-            $attributes = request()->validate([
-                'name' => 'required',
-                'email' => 'required|email|unique:users,email',
-                'password' => 'required|min:8',
-            ]);
-            
-            $user = User::create([
-                'name' => $attributes['name'],
-                'email' => $attributes['email'],
-                'password' => bcrypt($attributes['password']),
-            ]);
+        $attributes = request()->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+        ]);
 
-            return inertia('FileList');
+        $user = User::create([
+            'name' => $attributes['name'],
+            'email' => $attributes['email'],
+            'password' => bcrypt($attributes['password']),
+        ]);
+
+
+        return response()->json(['message' => 'User created successfully.'], 201);
     }
 
 

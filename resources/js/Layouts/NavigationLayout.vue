@@ -5,6 +5,7 @@
     </Head>
       <section class="p-6 bg-gray-200">
         <header class="flex justify-between">
+          <p>{{ name }}</p>
           <div class="flex items-center">
             <nav>
               <Link href="/">Home</Link>
@@ -31,5 +32,5 @@
     import { Head, Link, usePage } from '@inertiajs/vue3';
     
     const page = usePage();
-    // const username = computed(() => page.props.auth.user.username);
+    const name = computed(() => page.props.auth.user.name);
     </script>
