@@ -5,13 +5,21 @@
     </Head>
       <section class="p-6 bg-gray-200">
         <header class="flex justify-between">
-          <p>{{ name }}</p>
+          <!-- <p>{{name}}</p> -->
           <div class="flex items-center">
             <nav>
-              <Link href="/">Home</Link>
-              <Link href="/auth/login">Login</Link>
-              <Link href="/auth/logout">Logout</Link>
-              <Link href="/auth/create">Register</Link>
+              <NavLink href="/logout" method="post" as="button">
+                Logout
+              </NavLink>
+              <NavLink href="/" :active="$page.component === 'Home'">
+                Home
+              </NavLink>
+              <NavLink href="/auth/create" :active="$page.component === 'Auth/Create'">
+                Register
+              </NavLink>
+              <NavLink href="/auth/login" :active="$page.component === 'Auth/Login'">
+                Login
+              </NavLink>
             </nav>
           </div>
     
@@ -28,9 +36,9 @@
     
     <script setup>
     import { computed } from 'vue';
-    // import Nav from '../Components/Nav.vue';
-    import { Head, Link, usePage } from '@inertiajs/vue3';
+    import NavLink from '../Components/NavLink.vue';
+    import { Head, usePage } from '@inertiajs/vue3';
     
     const page = usePage();
-    const name = computed(() => page.props.auth.user.name);
+    // const name = computed(() => page.props.auth.user.name);
     </script>
