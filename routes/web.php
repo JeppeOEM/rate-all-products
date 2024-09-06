@@ -28,7 +28,7 @@ Route::put('/users/{id}', [UserController::class, 'update'])->can('update', 'App
 Route::middleware('auth')->group(function () {
 
     Route::get('/', function () {
-        return inertia('Home')->home('home');
+        return inertia('Home');
     });
 
     Route::get('/auth/login', function () {

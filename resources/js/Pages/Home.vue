@@ -1,5 +1,5 @@
 <template>
-<h1>Product Ratings</h1>
+<h1>Product Ratings - Home </h1>
 </template>
 
 <script setup>

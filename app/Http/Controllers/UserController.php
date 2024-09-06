@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         $attributes = request()->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|unique:users,email',
             'password' => 'required|min:8',
         ]);
 
@@ -26,8 +26,7 @@ class UserController extends Controller
             'password' => bcrypt($attributes['password']),
         ]);
 
-
-        return response()->json(['message' => 'User created successfully.'], 201);
+        return redirect('Home');
     }
 
 
@@ -43,7 +42,7 @@ class UserController extends Controller
 
         $user->update($attributes);
 
-        return inertia('FileList');
+        return inertia('Home');
     }
 
 
