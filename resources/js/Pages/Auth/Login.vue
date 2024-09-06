@@ -5,7 +5,7 @@
     <section class="bg-white p-8 rounded-xl max-w-md mx-auto border w-full">
       <h1 class="text-3xl mb-6">Log In</h1>
 
-      <form @submit.prevent="submit">
+      <form @submit.prevent="submit" method="POST">
         <div class="mb-6">
           <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="email"> Email </label>
 

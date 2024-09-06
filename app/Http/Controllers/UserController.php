@@ -8,7 +8,7 @@ use App\Rules\StrongPassword;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Auth\Events\Registered;
- 
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 
@@ -32,9 +32,9 @@ class UserController extends Controller
             'email' => $attributes['email'],
             'password' => bcrypt($attributes['password']),
         ]);
- 
-        event(new Registered($user));
-        return inertia('Auth/Login') ;
+        // Auth::login($user); 
+        // event(new Registered($user));
+        return inertia('/') ;
     }
 
 
