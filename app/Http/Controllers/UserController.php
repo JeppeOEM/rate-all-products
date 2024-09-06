@@ -22,7 +22,11 @@ class UserController extends Controller
                 'password' => 'required|min:8',
             ]);
             
-            $user = User::create($attributes);
+            $user = User::create([
+                'username' => $attributes['username'],
+                'email' => $attributes['email'],
+                'password' => bcrypt($attributes['password']),
+            ]);
 
 
     return inertia('FileList');
