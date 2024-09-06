@@ -5,21 +5,21 @@
     </Head>
       <section class="p-6 bg-gray-200">
         <header class="flex justify-between">
-          <p class="mr-4">
-      You are logged in as: {{ user.name }} 
-          </p>
+          <p v-if="user" class="mr-4">
+        You are logged in as: {{ user.name }}
+      </p>
           <div class="flex items-center">
             <nav>
-              <NavLink href="/logout" method="post" as="button">
+              <NavLink v-if="user" href="/logout" method="post" as="button">
                 Logout
               </NavLink>
-              <NavLink href="/" :active="$page.component === 'Home'">
+              <NavLink v-if="user" href="/" :active="$page.component === 'Home'">
                 Home
               </NavLink>
-              <NavLink href="/auth/create" :active="$page.component === 'Auth/Create'">
+              <NavLink v-if="!user" href="/auth/create" :active="$page.component === 'Auth/Create'">
                 Register
               </NavLink>
-              <NavLink href="/auth/login" :active="$page.component === 'Auth/Login'">
+              <NavLink v-if="!user" href="/auth/login" :active="$page.component === 'Auth/Login'">
                 Login
               </NavLink>
             </nav>
