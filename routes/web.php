@@ -17,21 +17,19 @@ Route::get('/auth/create', function () {
 });
 
 Route::get('/users/create', function () {
-    return Inertia::render('Users/Create');
+    return Inertia('Users/Create');
 })->can('create', 'App\Models\User');
+
+
+Route::post('/users', [UserController::class, 'store']);
+Route::put('/users/{id}', [UserController::class, 'update'])->can('update', 'App\Models\User');
+
 
 Route::middleware('auth')->group(function () {
 
     Route::get('/', function () {
         return inertia('Home')->home('home');
     });
-
-
-    Route::resource('users', UserController::class)->only([
-        'store',
-        'update',
-        'destroy'
-    ]);
 
     Route::get('/auth/login', function () {
         return inertia('Auth/Login');

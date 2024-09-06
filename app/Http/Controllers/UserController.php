@@ -11,36 +11,31 @@ class UserController extends Controller
 
 {
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-                $attributes = request()->validate([
-                'username' => 'required',
-                'email' => 'required|email',
+            $attributes = request()->validate([
+                'name' => 'required',
+                'email' => 'required|email|unique:users,email',
                 'password' => 'required|min:8',
             ]);
             
             $user = User::create([
-                'username' => $attributes['username'],
+                'name' => $attributes['name'],
                 'email' => $attributes['email'],
                 'password' => bcrypt($attributes['password']),
             ]);
 
-
-    return inertia('FileList');
+            return inertia('FileList');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
         $user = User::findOrFail($id);
 
         $attributes = $request->validate([
-            'username' => 'required',
+            'name' => 'required',
             'email' => 'required|email',
             'password' => 'nullable|min:8',
         ]);
@@ -50,9 +45,7 @@ class UserController extends Controller
         return inertia('FileList');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
 

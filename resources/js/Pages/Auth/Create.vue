@@ -45,6 +45,7 @@
 
   defineOptions({
     layout: NavigationLayout,
+    errors: Object,
 });
 
   let form = useForm({
