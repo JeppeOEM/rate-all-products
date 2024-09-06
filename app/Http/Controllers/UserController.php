@@ -26,7 +26,7 @@ class UserController extends Controller
             'password' => bcrypt($attributes['password']),
         ]);
 
-        return redirect('Home');
+        return inertia('Auth/Login') ;
     }
 
 
