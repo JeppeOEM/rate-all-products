@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Rules\StrongPassword;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Auth\Events\Registered;
+ 
 
 class UserController extends Controller
 
@@ -17,7 +20,11 @@ class UserController extends Controller
         $attributes = request()->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email',
-            'password' => 'required|min:8',
+            'password' => [
+                'required',
+                'min:8',
+                new StrongPassword
+            ],
         ]);
 
         $user = User::create([
@@ -25,7 +32,8 @@ class UserController extends Controller
             'email' => $attributes['email'],
             'password' => bcrypt($attributes['password']),
         ]);
-
+ 
+        event(new Registered($user));
         return inertia('Auth/Login') ;
     }
 
