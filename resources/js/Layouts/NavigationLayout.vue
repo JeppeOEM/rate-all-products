@@ -5,7 +5,9 @@
     </Head>
       <section class="p-6 bg-gray-200">
         <header class="flex justify-between">
-          <!-- <p>{{name}}</p> -->
+          <p class="mr-4">
+      You are logged in as: {{ user.name }} 
+          </p>
           <div class="flex items-center">
             <nav>
               <NavLink href="/logout" method="post" as="button">
@@ -38,7 +40,14 @@
     import { computed } from 'vue';
     import NavLink from '../Components/NavLink.vue';
     import { Head, usePage } from '@inertiajs/vue3';
-    
-    const page = usePage();
-    // const name = computed(() => page.props.auth.user.name);
+
+const props = defineProps({
+  auth: {
+    type: Object,
+    required: true
+  }
+});
+
+
+const user = computed(() => props.auth.user);
     </script>
