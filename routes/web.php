@@ -1,18 +1,47 @@
 <?php
+
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LoginController;
 
-Route::get('/', function () {
-    return inertia('Home');
+use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\ProductListController;
+use App\Http\Controllers\Auth\VerifyEmailController;
+use Illuminate\Auth\Events\Login;
+use Inertia\Inertia;
+
+Route::get('login', [LoginController::class, 'create'])->name('login');
+Route::post('login', [LoginController::class, 'store']);
+Route::post('logout', [LoginController::class, 'destroy'])->middleware('auth');
+
+Route::get('/register', function () {
+    return inertia('Auth/Create');
 });
 
 
-Route::get('/filelist', function () {
-    $allFiles = Storage::allFiles('/unimported');
-    $archivedFiles = Storage::allFiles('/archived');
-    return response()->json ([
-        'files' => $allFiles,
-        'archivedFiles' => $archivedFiles,
-    ]);
-});
+Route::post('/users', [UserController::class, 'store']);
+Route::put('/users/{id}', [UserController::class, 'update'])->can('update', 'App\Models\User');
 
+Route::get('verify-email', EmailVerificationPromptController::class)
+->name('verification.notice');
+
+Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
+->middleware(['signed', 'throttle:6,1'])
+->name('verification.verify');
+
+Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+->middleware('throttle:6,1');
+
+Route::get('/productlist/index', [ProductListController::class, 'index'])->name('productList.index');
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+
+    Route::get('/', function () {
+        return inertia('Home');
+    });
+
+});
