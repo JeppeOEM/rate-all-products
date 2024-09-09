@@ -32,9 +32,12 @@ class UserController extends Controller
             'email' => $attributes['email'],
             'password' => bcrypt($attributes['password']),
         ]);
-        // Auth::login($user); 
-        // event(new Registered($user));
-        return inertia('/') ;
+        Auth::login($user); 
+
+        // $user->sendEmailVerificationNotification();
+        event(new Registered($user));
+
+        return redirect()->route('verification.notice');
     }
 
 
@@ -62,4 +65,5 @@ class UserController extends Controller
 
         return inertia('Auth/Login');
     }
+
 }
