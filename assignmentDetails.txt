@@ -1,0 +1,95 @@
+I følgende sektioner vil der blive beskrevet delopgaver, som hører under denne samlede case. Husk på altid at undersøg eventuelle udfodringer via online dokumentation. 
+Husk ydermere altid at spørge højt, hvis der skulle være eventuelle uafklarede dele af opgaven, som den er beskrevet.
+
+God fornøjelse! 🥳
+
+
+
+Case - “RateAllProducts - Rate all your favorite products”
+
+Pandi Web er blevet kontaktet af en kunde, der ønsker oprettet et system, hvor brugere har mulighed for at vurdere produkter, som er blevet oprettet af systemet. 
+Det er altså forudbestemte produkter, som kunden ønsker oprettet i systemet og disse leveres via filer & APIer.
+
+Følgende features skal være mulige:
+
+Authorization 
+
+Login
+
+Registrer
+
+Se alle produkter
+
+Se enkelt produkt - herunder samlede vurderings gennemsnit
+
+Se andre brugeres vurderinger
+
+Vurdér produkt
+
+Ydermere skal det være muligt at importere produkter via commands i Laravel. Her skal både tages højde for filer og APIer.
+
+Tekster i systemet skal være på engelsk 🇬🇧
+
+
+
+Før du går videre med denne opgave, skal du opsætte en nye Laravel installation på din computer med navnet “rate-all-products”. Applikationen skal sættes op med Inertia og Vue. Eventuelt kan Tailwind også opsættes.
+
+Applikationen skal kunne tilgås på lokalt domæne med https aktivt. Fx 
+
+https://rate-all-products.test
+
+Ydermere skal applikationen kobles op på eget Github repo, hvor alt kode skal være comittet som det sidste før arbejdsdagen afsluttes. Hver dag.
+
+Din vejleder kan udlevere link til repo og assistere med en bruger på din arbejdsmail.
+
+Ved hver delopgave, skal der oprettes en seperat PR (Pull Request). Titlen på denne PR skal være det samme, som titlen på delopgaven. Kontakt altid din vejleder, når en delopgave menes at være færdiggjort.
+
+
+del 5
+
+Beskrivelse
+
+Før vi kan påbegynde arbejdet med oprettelse af anmeldelser, er det nødvendigt at fremvise de pågældende produkter. Dette skal gerne gøres, så man som bruger nemt kan danne sig et overblik over tilgængelige produkter.
+
+Det er altid vigtigt, at man ved udvikling af UI, tænker over del-elementerne og hvordan disse intuitivt vil interageres med af brugerne. Vi har 2 dygtige designere, som altid står klar, hvis man sidder overfor en kundeopgave og ikke helt ved, hvordan man grejer UI delen af opgaven.
+
+I denne opgave, skal I dog prøve selv at komme med et forslag til UI.
+
+Opgave
+
+Det skal være muligt for en bruger at finde frem til et produkt, de ønsker at anmelde.
+
+Krav
+
+Pagination skal være implementeret
+
+Det skal være muligt at søge efter eventuelle produkter.
+
+
+Del 6
+
+Beskrivelse
+
+Nu er vi kommet til det spændende - det enkelte produkt. Her skal være mulighed for at se informationer om produktet, andre brugeres anmeldelser, samt mulighed for selv at anmelde det pågældende produkt.
+
+Opgave
+
+Der skal oprettes et UI der fremviser informationer om det enkelte produkt
+
+Det skal være muligt at se alle andre anmeldelser af produktet
+
+Det skal være muligt at oprette en ny anmeldelse
+
+Det skal være muligt at redigere/slette ens egen anmeldelse
+
+Krav
+
+Der må kun oprettes 1 anmeldelse per bruger per produkt.
+
+Der skal oprettes følgende som del af en anmeldelse:
+
+Antal stjerner (1-6)
+
+Titel
+
+Beskrivelse
