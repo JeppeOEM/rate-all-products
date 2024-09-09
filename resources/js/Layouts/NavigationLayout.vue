@@ -27,29 +27,27 @@
                     </NavLink>
                     <NavLink
                         v-if="!user"
-                        href="/auth/create"
+                        href="/register"
                         :active="$page.component === 'Auth/Create'"
                     >
                         Register
                     </NavLink>
                     <NavLink
                         v-if="!user"
-                        href="/auth/login"
+                        href="/login"
                         :active="$page.component === 'Auth/Login'"
                     >
                         Login
                     </NavLink>
                 </nav>
             </div>
-
-            <!-- <Nav /> -->
         </header>
     </section>
 
     <section class="p-6">
-        <div class="max-w-3xl mx-auto">
+        <main class="mx-auto">
             <slot />
-        </div>
+        </main>
     </section>
 </template>
 

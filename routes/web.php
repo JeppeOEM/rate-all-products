@@ -17,14 +17,12 @@ Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::post('login', [LoginController::class, 'store']);
 Route::post('logout', [LoginController::class, 'destroy'])->middleware('auth');
 
-Route::get('/auth/create', function () {
+Route::get('/register', function () {
     return inertia('Auth/Create');
 });
-
-Route::get('/users/create', function () {
-    return Inertia('Users/Create');
-})->can('create', 'App\Models\User');
-
+// Route::get('/auth/login', function () {
+//     return inertia('Auth/Login');  
+// });
 
 Route::post('/users', [UserController::class, 'store']);
 Route::put('/users/{id}', [UserController::class, 'update'])->can('update', 'App\Models\User');
@@ -41,21 +39,11 @@ Route::post('email/verification-notification', [EmailVerificationNotificationCon
 
 Route::get('/productlist/index', [ProductListController::class, 'index'])->name('productList.index');
 
+
 Route::middleware('auth')->group(function () {
 
     Route::get('/', function () {
         return inertia('Home');
     });
-    // Route::get('/auth/login', function () {
-    //     return inertia('Auth/Login');
-    // });
 
-    Route::get('/filelist', function () {
-        $allFiles = Storage::allFiles('/unimported');
-        $archivedFiles = Storage::allFiles('/archived');
-        return response()->json([
-            'files' => $allFiles,
-            'archivedFiles' => $archivedFiles,
-        ]);
-    });
 });

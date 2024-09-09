@@ -21,8 +21,10 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
 
 <template>
         <Head title="Email Verification" />
+<div class="flex items-center justify-center ">
 
-        <div class="mb-4 text-sm text-gray-600">
+        <div class="flex flex-col p-8 rounded-xl border m-8">
+        <div class="mb-4 text-m text-gray-600">
             Thanks for signing up! Before getting started, could you verify your email address by clicking on the link
             we just emailed to you? If you didn't receive the email, we will gladly send you another.
         </div>
@@ -36,14 +38,10 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
                 <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Resend Verification Email
                 </PrimaryButton>
-<!-- 
-                <Link
-                    :href="route('logout')"
-                    method="post"
-                    as="button"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >Log Out</Link
-                > -->
+
             </div>
         </form>
+</div>
+
+</div>
 </template>
