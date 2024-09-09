@@ -34,7 +34,6 @@ class UserController extends Controller
         ]);
         Auth::login($user); 
 
-        // $user->sendEmailVerificationNotification();
         event(new Registered($user));
 
         return redirect()->route('verification.notice');
