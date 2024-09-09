@@ -20,7 +20,6 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
 </script>
 
 <template>
-    <GuestLayout>
         <Head title="Email Verification" />
 
         <div class="mb-4 text-sm text-gray-600">
@@ -37,15 +36,14 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
                 <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Resend Verification Email
                 </PrimaryButton>
-
+<!-- 
                 <Link
                     :href="route('logout')"
                     method="post"
                     as="button"
                     class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >Log Out</Link
-                >
+                > -->
             </div>
         </form>
-    </GuestLayout>
 </template>

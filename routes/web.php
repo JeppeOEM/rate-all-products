@@ -40,13 +40,13 @@ Route::post('email/verification-notification', [EmailVerificationNotificationCon
 ->middleware('throttle:6,1')
 ->name('verification.send');
 
+Route::get('/productlist/index', [ProductListController::class, 'index'])->name('productList.index');
 
 Route::middleware('auth')->group(function () {
 
     Route::get('/', function () {
         return inertia('Home');
     });
-    Route::get('/productlist/index', [ProductListController::class, 'index'])->name('productList.index');
     // Route::get('/auth/login', function () {
     //     return inertia('Auth/Login');
     // });
