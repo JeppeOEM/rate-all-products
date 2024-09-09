@@ -37,8 +37,7 @@ Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
 ->name('verification.verify');
 
 Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-->middleware('throttle:6,1')
-->name('verification.send');
+->middleware('throttle:6,1');
 
 Route::get('/productlist/index', [ProductListController::class, 'index'])->name('productList.index');
 
