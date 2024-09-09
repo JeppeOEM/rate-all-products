@@ -4,26 +4,22 @@
         <title>Product ratings</title>
     </Head>
     <section class="p-6 bg-gray-200">
-        <header class="flex justify-between">
-            <p v-if="user" class="mr-4">
-                You are logged in as: {{ user.name }}
-            </p>
+        <header class="flex justify-between items-center">
             <div class="flex items-center">
-                <nav>
-                    <NavLink
-                        v-if="user"
-                        href="/logout"
-                        method="post"
-                        as="button"
-                    >
-                        Logout
-                    </NavLink>
+                <nav class="flex space-x-4">
                     <NavLink
                         v-if="user"
                         href="/"
                         :active="$page.component === 'Home'"
                     >
                         Home
+                    </NavLink>
+                    <NavLink
+                        v-if="user"
+                        href="/product-list"
+                        :active="$page.component === 'ProductList/Index'"
+                    >
+                        Products
                     </NavLink>
                     <NavLink
                         v-if="!user"
@@ -40,6 +36,15 @@
                         Login
                     </NavLink>
                 </nav>
+            </div>
+            <div v-if="user" class="ml-auto">
+                <NavLink
+                    href="/logout"
+                    method="post"
+                    as="button"
+                >
+                    Logout
+                </NavLink>
             </div>
         </header>
     </section>

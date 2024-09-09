@@ -13,9 +13,9 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Auth\Events\Login;
 use Inertia\Inertia;
 
-Route::get('login', [LoginController::class, 'create'])->name('login');
-Route::post('login', [LoginController::class, 'store']);
-Route::post('logout', [LoginController::class, 'destroy'])->middleware('auth');
+Route::get('/login', [LoginController::class, 'create'])->name('login');
+Route::post('/login', [LoginController::class, 'store']);
+Route::post('/logout', [LoginController::class, 'destroy'])->middleware('auth');
 
 Route::get('/register', function () {
     return inertia('Auth/Create');
@@ -25,18 +25,15 @@ Route::get('/register', function () {
 Route::post('/users', [UserController::class, 'store']);
 Route::put('/users/{id}', [UserController::class, 'update'])->can('update', 'App\Models\User');
 
-Route::get('verify-email', EmailVerificationPromptController::class)
-->name('verification.notice');
+Route::get('/verify-email', EmailVerificationPromptController::class)
+    ->name('verification.notice');
 
-Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
-->middleware(['signed', 'throttle:6,1'])
-->name('verification.verify');
+Route::get('/verify-email/{id}/{hash}', VerifyEmailController::class)
+    ->middleware(['signed', 'throttle:6,1'])
+    ->name('verification.verify');
 
-Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-->middleware('throttle:6,1');
-
-Route::get('/productlist/index', [ProductListController::class, 'index'])->name('productList.index');
-
+Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+    ->middleware('throttle:6,1');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
@@ -44,4 +41,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return inertia('Home');
     });
 
+    Route::get('/product-list', [ProductListController::class, 'index'])->name('productList.index');
 });
