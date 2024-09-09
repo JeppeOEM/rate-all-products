@@ -1,0 +1,48 @@
+del 5
+
+Beskrivelse
+
+Før vi kan påbegynde arbejdet med oprettelse af anmeldelser, er det nødvendigt at fremvise de pågældende produkter. Dette skal gerne gøres, så man som bruger nemt kan danne sig et overblik over tilgængelige produkter.
+
+Det er altid vigtigt, at man ved udvikling af UI, tænker over del-elementerne og hvordan disse intuitivt vil interageres med af brugerne. Vi har 2 dygtige designere, som altid står klar, hvis man sidder overfor en kundeopgave og ikke helt ved, hvordan man grejer UI delen af opgaven.
+
+I denne opgave, skal I dog prøve selv at komme med et forslag til UI.
+
+Opgave
+
+Det skal være muligt for en bruger at finde frem til et produkt, de ønsker at anmelde.
+
+Krav
+
+Pagination skal være implementeret
+
+Det skal være muligt at søge efter eventuelle produkter.
+
+
+Del 6
+
+Beskrivelse
+
+Nu er vi kommet til det spændende - det enkelte produkt. Her skal være mulighed for at se informationer om produktet, andre brugeres anmeldelser, samt mulighed for selv at anmelde det pågældende produkt.
+
+Opgave
+
+Der skal oprettes et UI der fremviser informationer om det enkelte produkt
+
+Det skal være muligt at se alle andre anmeldelser af produktet
+
+Det skal være muligt at oprette en ny anmeldelse
+
+Det skal være muligt at redigere/slette ens egen anmeldelse
+
+Krav
+
+Der må kun oprettes 1 anmeldelse per bruger per produkt.
+
+Der skal oprettes følgende som del af en anmeldelse:
+
+Antal stjerner (1-6)
+
+Titel
+
+Beskrivelse
