@@ -20,9 +20,7 @@ Route::post('logout', [LoginController::class, 'destroy'])->middleware('auth');
 Route::get('/register', function () {
     return inertia('Auth/Create');
 });
-// Route::get('/auth/login', function () {
-//     return inertia('Auth/Login');  
-// });
+
 
 Route::post('/users', [UserController::class, 'store']);
 Route::put('/users/{id}', [UserController::class, 'update'])->can('update', 'App\Models\User');
@@ -40,7 +38,7 @@ Route::post('email/verification-notification', [EmailVerificationNotificationCon
 Route::get('/productlist/index', [ProductListController::class, 'index'])->name('productList.index');
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/', function () {
         return inertia('Home');
