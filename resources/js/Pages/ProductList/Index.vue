@@ -58,7 +58,7 @@
             </article>
         </div>
         <div class="flex flex-row justify-center items-center pb-8">
-            <Pagination :links="products.links" class="mt-6" />
+            <Pagination :links="products.links" />
         </div>
 
     </div>

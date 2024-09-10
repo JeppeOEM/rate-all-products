@@ -1,7 +1,10 @@
 <template>
-  <div class="min-h-screen">
+  <div class="min-h-screen flex justify-center">
 
-    <h1 class="text-xl">Rate all products</h1>
+    <h1 class="text-xl pt-40">Rate all products</h1>
+    
+
+
   </div>
 </template>
 
