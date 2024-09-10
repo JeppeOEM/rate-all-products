@@ -1,5 +1,8 @@
 <template>
-    <h1>Product Ratings - Home</h1>
+  <div class="min-h-screen">
+
+    <h1 class="text-xl">Rate all products</h1>
+  </div>
 </template>
 
 <script setup>

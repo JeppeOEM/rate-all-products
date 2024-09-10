@@ -2,14 +2,19 @@
     <Head title="All products" />
 
     <div class="">
-        <div class="flex flex-row">
+        <div class="flex flex-row justify-between pt-4">
             <h1 class="text-3xl p-4">All products</h1>
-            <div class="p-4">
+            <div class="p-4 relative">
                 <input
                     v-model="search"
                     type="text"
-                    placeholder="Search"
-                    class="border p-2 rounded-md focus:border-blue-500 focus:outline-none"
+                    placeholder="Search products"
+                    class="border p-2 pl-10 rounded-xl focus:border-blue-500 focus:outline-none"
+                />
+                <img
+                    src="/icons8-search.svg"
+                    alt="Search Icon"
+                    class="absolute left-7 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
                 />
             </div>
         </div>
@@ -52,8 +57,10 @@
                 </Link>
             </article>
         </div>
+        <div class="flex flex-row justify-center items-center pb-8">
+            <Pagination :links="products.links" class="mt-6" />
+        </div>
 
-        <Pagination :links="products.links" class="mt-6" />
     </div>
 </template>
 

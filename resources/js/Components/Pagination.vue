@@ -4,7 +4,7 @@
             v-if="link.url"
             :href="link.url"
             v-html="link.label"
-            class="p-1"
+            :class="['p-1', { 'text-lg text-blue-700 underline font-bold': link.active, 'text-lg hover:text-blue-700 ': !link.active }]"
         />
         <span v-else v-html="link.label"> </span>
     </template>
