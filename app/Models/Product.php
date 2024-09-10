@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Exception;
@@ -27,21 +27,19 @@ class Product extends Model
     ];
 
 
-    public function findChildren()
+    public function ratings() : HasMany
     {
-        if (is_null($this->parent_id)) {
-            throw new Exception('parent_id is null. No children to find.');
-        } else {
-            self::where('parent_id', $this->parent_id)->get();
-        }
+        return $this->hasMany(Rating::class);
     }
 
-    public function deleteChildren()
-    {
-        if (is_null($this->parent_id)) {
-            throw new Exception('parent_id is null. Cannot delete children.');
-        } else {
-            self::where('parent_id', $this->parent_id)->delete();
-        }
-    }
+
+    // public function findChildren()
+    // {
+    //     if (is_null($this->parent_id)) {
+    //         throw new Exception('parent_id is null. No children to find.');
+    //     } else {
+    //         self::where('parent_id', $this->parent_id)->get();
+    //     }
+    // }
+
 }
