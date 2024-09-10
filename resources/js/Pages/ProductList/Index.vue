@@ -1,8 +1,9 @@
 <template>
     <Head title="All products" />
 
-    <h1 class="text-3xl mb-6">All products</h1>
+<div>
 
+    <h1 class="text-3xl p-4">All products</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0 p-4">
         <article v-for="product in products.data" :key="product.id" class="bg-white overflow-hidden outline outline-1 outline-gray-300 outline-offset-[-1px] flex flex-col justify-between">
             <Link :href="`/products/${product.id}`" class="flex-grow flex flex-col justify-between">
@@ -22,6 +23,8 @@
     </div>
 
     <Pagination :links="products.links" class="mt-6" />
+
+</div>
 </template>
 
 <script setup>

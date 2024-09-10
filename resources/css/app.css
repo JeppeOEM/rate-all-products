@@ -2,14 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
-    --navbar-height: -10rem; 
+
+
 }
-
-
 
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
+
+@media (max-width: 768px) {
+    :root {
+   
+    
+    }
+}
+

@@ -3,8 +3,8 @@
         <!-- fallback title -->
         <title>Product ratings</title>
     </Head>
-    <section class="p-6 bg-gray-200 fixed top-0      w-full flex items-center">
-        <header class="flex justify-between items-center">
+    <section class="p-5 bg-gray-200 fixed top-0 w-full flex justify-center">
+        <header class="px-5 flex justify-between items-center w-full max-w-screen-lg">
             <div class="flex items-center">
                 <nav class="flex space-x-4">
                     <NavLink
@@ -49,9 +49,11 @@
         </header>
     </section>
 
-    <section class="p-6">
-        <main class="mx-auto">
+    <section class="flex justify-center">
+        <main class="main-content max-w-screen-lg">
+            <div >
             <slot />
+            </div>
         </main>
     </section>
 </template>
