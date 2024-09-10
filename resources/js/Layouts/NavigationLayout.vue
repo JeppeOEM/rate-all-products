@@ -3,7 +3,7 @@
         <!-- fallback title -->
         <title>Product ratings</title>
     </Head>
-    <section class="p-6 bg-gray-200">
+    <section class="p-6 bg-gray-200 fixed top-0      w-full flex items-center">
         <header class="flex justify-between items-center">
             <div class="flex items-center">
                 <nav class="flex space-x-4">

@@ -13,9 +13,11 @@ class ProductListController extends Controller
         return inertia('ProductList/Index', [
             'products' => Product::paginate(16)->through(fn($product) => [
                 'id' => $product->id,
-                'description' => $product->description
+                'description' => $product->description,
+               'price' => $product->price,
+               'shop_id' => $product->shop_id,
             ])
         ]);
 
     }
-}
+}   
