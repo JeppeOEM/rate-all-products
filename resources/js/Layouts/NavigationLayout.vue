@@ -49,11 +49,11 @@
         </header>
     </section>
 
-    <section class="flex justify-center">
-        <main class="main-content max-w-screen-lg">
-            <div >
+    <section class="flex justify-center  h-full">
+        <main class="main-content w-full max-w-screen-lg border">
+
             <slot />
-            </div>
+
         </main>
     </section>
 </template>

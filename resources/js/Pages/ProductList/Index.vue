@@ -1,11 +1,11 @@
 <template>
     <Head title="All products" />
 
-<div>
+<div class="">
 
     <h1 class="text-3xl p-4">All products</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0 p-4">
-        <article v-for="product in products.data" :key="product.id" class="bg-white overflow-hidden outline outline-1 outline-gray-300 outline-offset-[-1px] flex flex-col justify-between">
+        <article v-for="product in products.data" :key="product.id" class="hover-highlight bg-white overflow-hidden outline outline-1 outline-gray-300 outline-offset-[-1px] flex flex-col justify-between">
             <Link :href="`/products/${product.id}`" class="flex-grow flex flex-col justify-between">
                 <img class="w-full h-48 object-cover" :src="product.image_url || 'https://via.placeholder.com/300'" alt="Product Image">
                 <div class="p-4 flex flex-col flex-grow justify-between">

@@ -5,6 +5,7 @@
 
 :root {
 
+    --top-margin: 4rem;
 
 }
 
@@ -19,5 +20,13 @@
    
     
     }
+} 
+.main-content{
+    margin-top: var(--top-margin);
 }
 
+
+
+.hover-highlight {
+    @apply hover:bg-gray-100 transition duration-300 ease-in-out;
+}

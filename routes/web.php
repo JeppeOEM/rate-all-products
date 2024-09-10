@@ -8,7 +8,7 @@ use App\Http\Controllers\Auth\LoginController;
 
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\ProductListController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Auth\Events\Login;
 use Inertia\Inertia;
@@ -41,5 +41,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return inertia('Home');
     });
 
-    Route::get('/product-list', [ProductListController::class, 'index'])->name('productList.index');
+    Route::get('/product-list', [ProductController::class, 'index'])->name('product.index');
 });
