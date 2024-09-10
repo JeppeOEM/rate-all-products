@@ -19,7 +19,7 @@
                         <p class="text-gray-600 mt-2">{{ product.description }}</p>
                     </div>
                     <div class="flex items-center justify-between mt-4">
-                        <span class="text-gray-800 font-bold text-lg">${{ product.price }}</span>
+                        <span class="text-gray-800 font-bold text-lg">{{ product.price }} <span class="text-grey-400">kr </span> </span>
 
                     </div>
                 </div>

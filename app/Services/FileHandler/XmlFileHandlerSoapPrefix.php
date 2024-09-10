@@ -22,16 +22,21 @@ class XmlFileHandlerSoapPrefix extends FileHandler implements FileHandlerInterfa
         return collect($responseArray);
     }
 
-    private function productType(string $stringBool): string
+    private function productType(string $cost): string
     {
-        switch ($stringBool) {
-            case 'true':
-                return 'simple';
-            case 'false':
-                return 'subcategory';
-            default:
-                return null;
+        $category = null;
+
+        if (is_numeric($cost)){
+        if ($cost === '0'){
+            $category = 'subcategory';
         }
+        else {
+            $category = 'simple';
+        }
+        }
+
+        return $category;
+
     }
 
     public function saveToDb(Collection $rows): bool
@@ -49,7 +54,7 @@ class XmlFileHandlerSoapPrefix extends FileHandler implements FileHandlerInterfa
                 ]);
 
                 $product->fill([
-                    'product_type' => $this->productType($row['Own_Item']),
+                    'product_type' => $this->productType($row['Unit_Cost']),
                     'parent_id' => null,
                     'shop_id' => $row['Vendor_No'] ?? null,
                     'description' => $row['Description'] ?? null,
