@@ -3,27 +3,23 @@
         <!-- fallback title -->
         <title>Product ratings</title>
     </Head>
-    <section class="p-6 bg-gray-200">
-        <header class="flex justify-between">
-            <p v-if="user" class="mr-4">
-                You are logged in as: {{ user.name }}
-            </p>
+    <section class="p-5 bg-white fixed top-0 w-full flex justify-center border-bottom border-b-2 border-grey-800">
+        <header class="px-4 flex justify-between items-center w-full max-w-screen-xl">
             <div class="flex items-center">
-                <nav>
-                    <NavLink
-                        v-if="user"
-                        href="/logout"
-                        method="post"
-                        as="button"
-                    >
-                        Logout
-                    </NavLink>
+                <nav class="flex space-x-4">
                     <NavLink
                         v-if="user"
                         href="/"
                         :active="$page.component === 'Home'"
                     >
                         Home
+                    </NavLink>
+                    <NavLink
+                        v-if="user"
+                        href="/product-list"
+                        :active="$page.component === 'ProductList/Index'"
+                    >
+                        Products
                     </NavLink>
                     <NavLink
                         v-if="!user"
@@ -41,12 +37,23 @@
                     </NavLink>
                 </nav>
             </div>
+            <div v-if="user" class="ml-auto">
+                <NavLink
+                    href="/logout"
+                    method="post"
+                    as="button"
+                >
+                    Logout
+                </NavLink>
+            </div>
         </header>
     </section>
 
-    <section class="p-6">
-        <main class="mx-auto">
+    <section class="flex justify-center h-full">
+        <main class="main-content w-full max-w-screen-xl border bg-slate-100">
+
             <slot />
+
         </main>
     </section>
 </template>

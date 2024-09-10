@@ -19,7 +19,7 @@ class EmailVerificationPromptController extends Controller
         // dd($request->user()->hasVerifiedEmail());
 
         return $request->user()->hasVerifiedEmail()
-                    ? redirect()->intended(route('productList.index', absolute: false))
+                    ? redirect()->intended(route('product.index', absolute: false))
                     : inertia('Auth/VerifyEmail', ['status' => session('status')]);
     }
 }
