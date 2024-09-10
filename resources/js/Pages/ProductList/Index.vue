@@ -2,8 +2,13 @@
     <Head title="All products" />
 
 <div class="">
-
+    <div class="flex flex-row">
     <h1 class="text-3xl p-4">All products</h1>
+    <div class="p-4">
+
+    <input v-model="search" type="text" placeholder="Search" class="border p-2 rounded-md focus:border-blue-500 focus:outline-none" />
+    </div>
+    </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0 p-4">
         <article v-for="product in products.data" :key="product.id" class="hover-highlight bg-white overflow-hidden outline outline-1 outline-gray-300 outline-offset-[-1px] flex flex-col justify-between">
             <Link :href="`/products/${product.id}`" class="flex-grow flex flex-col justify-between">
@@ -31,10 +36,20 @@
 import { Link, Head } from "@inertiajs/vue3";
 import NavigationLayout from "@/Layouts/NavigationLayout.vue";
 import Pagination from "@/Components/Pagination.vue";
-
+import { ref, watch } from "vue"
+import {router} from "@inertiajs/vue3"
 defineOptions({
     layout: NavigationLayout,
 });
 
 defineProps({ products: Object });
+
+const search = ref('')
+
+watch(search, value => {
+  router.get('/product-list', { search: value }, {
+    preserveState: true,
+    replace: true
+  });
+});
 </script>

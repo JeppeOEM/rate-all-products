@@ -7,26 +7,30 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function index()
-    {
 
-        return inertia('ProductList/Index', [
-            'products' => Product::paginate(16)->through(fn($product) => [
-                'id' => $product->id,
-                'description' => $product->description,
-               'price' => $product->price,
-               'shop_id' => $product->shop_id,
-            ])
-        ]);
 
+        public function index(Request $request)
+        {
+            $products = Product::query()
+                ->when($request->input('search'), function ($query, $search) {
+                    $query->where('description', 'like', "%{$search}%");
+                })
+                ->paginate(16)
+                ->appends($request->query());
+    
+            return inertia('ProductList/Index', [
+                'products' => $products->through(fn($product) => [
+                    'id' => $product->id,
+                    'description' => $product->description,
+                    'price' => $product->price,
+                    'shop_id' => $product->shop_id,
+                ])
+            ]);
+        }
     }
 
+    // public function show(Product $product)
+    // {
+    //     return view('products.show', compact('product'));
+    // }
 
-    public function show(Product $product)
-    {
-        return view('products.show', compact('product'));
-    }
-
-
-
-}
