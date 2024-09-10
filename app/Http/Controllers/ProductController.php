@@ -33,8 +33,8 @@ class ProductController extends Controller
     # Sending the model via route model binding
     public function show(Product $product)
     {
-        // $product = Product::findOrFail($id);
-        return inertia('Product/SigleProduct', compact('product'));
+
+        return inertia('Product/SingleProduct', compact('product'));
     }
 }
 

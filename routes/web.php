@@ -42,6 +42,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return inertia('Home');
     });
 
-    Route::get('/product-list', [ProductController::class, 'index'])->name('product.index');
-    Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+    Route::get('/products', [ProductController::class, 'index'])->name('product.index');
+    Route::get('/products/{product}', [ProductController::class, 'show'])->name('product.show');
 });

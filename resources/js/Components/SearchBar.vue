@@ -23,7 +23,7 @@ const search = ref("");
 
 watch(search, (value) => {
     router.get(
-        "/product-list",
+        "/products",
         { search: value },
         {
             preserveState: true,

@@ -37,3 +37,4 @@ defineOptions({
 defineProps({ products: Object });
 
 </script>
+// $product = Product::findOrFail($id);

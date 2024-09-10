@@ -16,7 +16,7 @@
                     </NavLink>
                     <NavLink
                         v-if="user"
-                        href="/product-list"
+                        href="/products"
                         :active="$page.component === 'Product/ProductList'"
                     >
                         Products
