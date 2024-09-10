@@ -9,20 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class RatingController extends Controller
 {
-    /** wc
-     * Store a newly created rating in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request, $productId)
+
+    public function store(Request $request, Product $product)
     {
         $request->validate([
             'rating' => 'required|integer|min:1|max:6',
             'comment' => 'string'
         ]);
-
-        $product = Product::findOrFail($productId);
 
         $rating = new Rating();
         $rating->rating = $request->input('rating');
@@ -33,20 +26,19 @@ class RatingController extends Controller
         $rating->product_id = $product->id;
         $rating->save();
 
-        return response()->json(['message' => 'Rating added successfully'], 201);
+        return redirect()->route('product.show', $product->id)->with('success', 'Rating added successfully');
     }
 
-    public function destroy($id)
-    {
-        $rating = Rating::findOrFail($id);
 
+    public function destroy(Rating $rating)
+    {
         if ($rating->user_id !== Auth::id()) {
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 
+        $productId = $rating->product_id;
         $rating->delete();
 
-        return response()->json(['message' => 'Rating deleted successfully'], 200);
+        return redirect()->route('product.show', $productId)->with('success', 'Rating deleted successfully');
     }
-
 }

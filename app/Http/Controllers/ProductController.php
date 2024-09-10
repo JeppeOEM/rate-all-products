@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-
+use Inertia\Response;
 class ProductController extends Controller
 {
 
 
-    public function index(Request $request)
+    public function index(Request $request) : Response
     {
         $products = Product::query()
             ->where('product_type', 'simple')
@@ -31,10 +31,14 @@ class ProductController extends Controller
     }
 
     # Sending the model via route model binding
-    public function show(Product $product)
+    public function show(Product $product) : Response
     {
 
-        return inertia('Product/SingleProduct', compact('product'));
+        $product->load('ratings');
+        $product->load('ratings');
+        return inertia('Product/SingleProduct', [
+            'product' => $product,
+            'ratings' => $product->ratings
+        ]);
     }
 }
-

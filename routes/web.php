@@ -44,4 +44,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/products', [ProductController::class, 'index'])->name('product.index');
     Route::get('/products/{product}', [ProductController::class, 'show'])->name('product.show');
+    Route::post('/products/{product}/ratings', [RatingController::class, 'store'])->name('ratings.store');
+    Route::delete('/ratings/{rating}', [RatingController::class, 'destroy'])->name('ratings.destroy');
+
 });
