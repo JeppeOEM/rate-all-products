@@ -6,7 +6,7 @@
             v-html="link.label"
             :class="['p-1', { 'text-lg text-blue-700 underline font-bold': link.active, 'text-lg hover:text-blue-700 ': !link.active }]"
         />
-        <span class="text-lg" v-else v-html="link.label"> </span>
+        <span class="text-lg text-slate-400" v-else v-html="link.label"> </span>
     </template>
 </template>
 
