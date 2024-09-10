@@ -29,9 +29,12 @@ class ProductController extends Controller
             ])
         ]);
     }
+
+    # Sending the model via route model binding
     public function show(Product $product)
     {
-        return inertia('products.show', compact('product'));
+        // $product = Product::findOrFail($id);
+        return inertia('Product/SigleProduct', compact('product'));
     }
 }
 

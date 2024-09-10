@@ -43,4 +43,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::get('/product-list', [ProductController::class, 'index'])->name('product.index');
+    Route::get('/product', [ProductController::class, 'index'])->name('product.index');
 });
