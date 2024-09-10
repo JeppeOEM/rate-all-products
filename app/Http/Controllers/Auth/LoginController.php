@@ -12,7 +12,7 @@ class LoginController extends Controller
 {
     public function create()
     {
-        return Inertia::render('Auth/Login');  
+        return Inertia::render('Auth/Login');
     }
 
     public function store(Request $request)
@@ -39,6 +39,4 @@ class LoginController extends Controller
 
         return redirect()->route('login');
     }
-
-
 }

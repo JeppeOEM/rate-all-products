@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 
 {
- 
+
 
     public function store(Request $request)
     {
@@ -32,7 +32,7 @@ class UserController extends Controller
             'email' => $attributes['email'],
             'password' => bcrypt($attributes['password']),
         ]);
-        Auth::login($user); 
+        Auth::login($user);
 
         event(new Registered($user));
 
@@ -64,5 +64,4 @@ class UserController extends Controller
 
         return inertia('Auth/Login');
     }
-
 }

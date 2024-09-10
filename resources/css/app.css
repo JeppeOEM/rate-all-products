@@ -2,11 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
-
     --top-margin: 4rem;
-
 }
 
 *,
@@ -17,15 +14,11 @@
 
 @media (max-width: 768px) {
     :root {
-   
-    
     }
-} 
-.main-content{
+}
+.main-content {
     margin-top: var(--top-margin);
 }
-
-
 
 .hover-highlight {
     @apply hover:bg-gray-100 transition duration-300 ease-in-out;
