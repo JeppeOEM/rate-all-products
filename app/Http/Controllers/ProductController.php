@@ -19,7 +19,7 @@ class ProductController extends Controller
             ->paginate(16)
             ->appends($request->query());
 
-        return inertia('ProductList/Index', [
+        return inertia('Product/ProductList', [
             'products' => $products->through(fn($product) => [
                 'id' => $product->id,
                 'description' => $product->description,
@@ -29,9 +29,9 @@ class ProductController extends Controller
             ])
         ]);
     }
+    public function show(Product $product)
+    {
+        return inertia('products.show', compact('product'));
+    }
 }
 
-    // public function show(Product $product)
-    // {
-    //     return view('products.show', compact('product'));
-    // }
