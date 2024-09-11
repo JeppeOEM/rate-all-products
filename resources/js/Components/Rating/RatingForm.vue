@@ -33,7 +33,7 @@ const props = defineProps({
     form: Object,
     isEditing: Boolean,
     productId: Number,
-});
+});  
 
 const emit = defineEmits(['submit']);
 
