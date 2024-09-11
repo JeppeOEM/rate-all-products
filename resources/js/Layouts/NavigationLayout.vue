@@ -49,7 +49,7 @@
         </header>
     </section>
 
-    <section class="flex justify-center min-h-screen h-full">
+    <section class="flex justify-center min-h-screen h-full bg-gray-100">
         <main class="main-content w-full max-w-screen-xl ">
             <slot />
         </main>

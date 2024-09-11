@@ -1,60 +1,65 @@
 <template>
-  <Head :title="pageTitle" />
+    <Head :title="pageTitle" />
 
-  <div class="container mx-auto main-layout-padding">
-      <h1 class="headline py-4">{{ product.description }}</h1>
-      <p class="text-xl mb-2">
-          Price: {{ product.price }} {{ product.currency }}
-      </p> 
+    <div class="container mx-auto main-layout-padding">
+        <h1 class="headline py-4">{{ product.description }}</h1>
+        <p class="text-xl mb-2">
+            Price: {{ product.price }} {{ product.currency }}
+        </p>
 
-
-      <p class="text-xl mb-2"v-if="displayAlcoholPct">Alcohol: {{product.alcohol_pct}} %</p>
-
-      <span class="text-xl mb-2">Average Rating: </span>
-      <span class="text-xl">{{ displayAvgRating }}</span>
-      <div v-if="hasRelatedProducts">
-      <RelatedProductsCarousel :relatedProducts="related_products"/>
-      </div>
-      <div class="mt-4">
-          <h2 class="text-4xl mt-6 mb-4">Ratings</h2>
-          <section class="space-y-4">
-              <article
-                  v-for="rating in ratings"
-                  :key="rating.id"
-                  v-show="editingRatingId !== rating.id"
-                  class="bg-white p-4 custom-border space-y-2"
-              >
-                  <h3 class="text-xl">{{ rating.title }}</h3>
-                  <StarRating :rating="rating.rating" />
-                  <p class="text-gray-700 font-semibold">Review:</p>
-                  <span> {{ rating.comment }}</span>
-                  <div class="space-x-3" v-if="rating.user_id === userId">
-                      <button
-                          @click="deleteRating(rating.id)"
-                          class="black-button"
-                      >
-                          Delete Rating
-                      </button>
-                      <button
-                          @click="editRating(rating)"
-                          class="black-button"
-                      >
-                          Edit Rating
-                      </button>
-                  </div>
-              </article>
-          </section>
-          <div>
-              <RatingForm
-                  v-if="!hasUserRated || isEditing"
-                  :form="form"
-                  :isEditing="isEditing"
-                  :productId="product.id"
-                  @submit="submitRating"
-              />
-          </div>
-      </div>
-  </div>
+        <p class="text-xl mb-2" v-if="displayAlcoholPct">
+            Alcohol: {{ product.alcohol_pct }} %
+        </p>
+        <div class="mb-2">
+            <span class="text-xl mb-2">Average Rating: </span>
+            <span class="text-xl mb-2">{{ displayAvgRating }}</span>
+        </div>
+        <div v-if="hasRelatedProducts">
+            <RelatedProductsCarousel :relatedProducts="related_products" />
+        </div>
+        <div class="mt-4">
+            <h2 class="text-4xl mt-6 mb-4">Ratings</h2>
+            <section class="space-y-4">
+                <div v-if="ratings.length === 0" class="text-gray-500">
+                    No ratings yet. Be the first to rate this product!
+                </div>
+                <article
+                    v-for="rating in ratings"
+                    :key="rating.id"
+                    v-show="editingRatingId !== rating.id"
+                    class="bg-white p-4 custom-border space-y-2"
+                >
+                    <h3 class="text-xl">{{ rating.title }}</h3>
+                    <StarRating :rating="rating.rating" />
+                    <p class="text-gray-700 font-semibold">Review:</p>
+                    <span> {{ rating.comment }}</span>
+                    <div class="space-x-3" v-if="rating.user_id === userId">
+                        <button
+                            @click="deleteRating(rating.id)"
+                            class="black-button"
+                        >
+                            Delete Rating
+                        </button>
+                        <button
+                            @click="editRating(rating)"
+                            class="black-button"
+                        >
+                            Edit Rating
+                        </button>
+                    </div>
+                </article>
+            </section>
+            <div>
+                <RatingForm
+                    v-if="!hasUserRated || isEditing"
+                    :form="form"
+                    :isEditing="isEditing"
+                    :productId="product.id"
+                    @submit="submitRating"
+                />
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup>
@@ -67,16 +72,16 @@ import RatingForm from "@/Components/Rating/RatingForm.vue";
 import RelatedProductsCarousel from "./RelatedProductsCarousel.vue";
 
 defineOptions({
-  layout: NavigationLayout,
+    layout: NavigationLayout,
 });
 
 const props = defineProps({
-  product: Object,
-  ratings: Array,
-  auth: Object,
-  avg_rating: Number,
-  errors: Object,
-  related_products: Array
+    product: Object,
+    ratings: Array,
+    auth: Object,
+    avg_rating: Number,
+    errors: Object,
+    related_products: Array,
 });
 
 const form = ref({
@@ -111,27 +116,25 @@ const pageTitle = computed(() => {
         : "Product Details";
 });
 
-
-
 const submitRating = () => {
     if (isEditing.value) {
-        router.put(`/ratings/${form.value.id}`, form.value)
-        isEditing.value = false
-        editingRatingId.value = null
+        router.put(`/ratings/${form.value.id}`, form.value);
+        isEditing.value = false;
+        editingRatingId.value = null;
     } else {
         console.log(form.value);
-        router.post(`/products/${props.product.id}/ratings`, form.value)
-        isEditing.value = false
-        editingRatingId.value = null
+        router.post(`/products/${props.product.id}/ratings`, form.value);
+        isEditing.value = false;
+        editingRatingId.value = null;
     }
 };
 
 const deleteRating = (ratingId) => {
     router.delete(`/ratings/${ratingId}`);
-    form.value.rating = 1
-    form.value.title = ""
-    form.value.comment = ""
-    delete form.value.id 
+    form.value.rating = 1;
+    form.value.title = "";
+    form.value.comment = "";
+    delete form.value.id;
 };
 
 const editRating = (rating) => {
