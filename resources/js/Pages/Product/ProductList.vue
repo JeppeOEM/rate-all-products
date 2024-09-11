@@ -2,15 +2,15 @@
     <Head title="All products" />
 
     <div class="main-layout-padding">
-        <div class="flex flex-row justify-between">
-            <h1 class="headline p-4">All products</h1>
+        <div class="flex flex-col  sm:flex-row  justify-between">
+            <h1 class="headline py-4">All products</h1>
             <SearchBar>
                 
             </SearchBar>
 
         </div>
         <div
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0 main-layout-padding"
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3"
         >
         <ProductListItem
                 v-for="product in products.data"

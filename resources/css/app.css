@@ -37,11 +37,11 @@
 }
 
 .main-layout-padding {
-    @apply p-4;
+    @apply p-10;
 }
 /* make dobble to match main layout */
 .main-layout-nav {
-    @apply px-8;
+    @apply px-10;
 }
 
 .custom-outline {

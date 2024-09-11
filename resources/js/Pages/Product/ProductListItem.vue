@@ -1,13 +1,13 @@
 <template>
     <article
-        class="hover-highlight bg-white overflow-hidden custom-outline outline-gray-400 flex flex-col justify-between"
+        class="hover-highlight bg-white overflow-hidden rounded-xl shadow-md flex flex-col justify-between"
     >
         <Link
             :href="`/products/${product.id}`"
             class="flex-grow flex flex-col justify-between"
         >
             <img
-                class="w-full h-48 object-cover"
+                class="w-full h-48 object-cover rounded-t-xl"
                 :src="product.image_url || 'https://via.placeholder.com/300'"
                 alt="Product Image"
             />
@@ -32,10 +32,7 @@
 </template>
 
 <script setup>
-
-
 import { Link } from "@inertiajs/vue3";
-
 import { defineProps } from 'vue';
 
 const props = defineProps({

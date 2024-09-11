@@ -38,7 +38,7 @@
           </button>
         </div>
       </form>
-    </section>
+    </section>  
   </main>
 </template>
 
