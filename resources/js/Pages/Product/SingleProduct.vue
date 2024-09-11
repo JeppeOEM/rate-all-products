@@ -28,46 +28,33 @@
               <div v-if="rating.user_id === userId">
                 <button
                   @click="deleteRating(rating.id)"
-                  class="text-red-500 hover:text-red-700"
+                  class="black-button"
                 >
                   Delete Rating
                 </button>
+                <button
+                  @click="editRating(rating.id)"
+                  class="black-button"
+                >
+                  Edit Rating
+                </button>
+
               </div>
 
             </article>
           </section>
-  
-          <form
-            v-if="!hasUserRated"
-            @submit.prevent="submitRating"
-            class="mt-6 bg-white p-4 custom-border"
-          >
-            <div class="mb-4">
-              <label for="rating" class="standart-label"
-                >Rating:</label
-              >
-              <StarRating :rating="form.rating" @update:rating="setRating" />
-            </div>
-            <div class="mb-4">
-              <label for="title" class="standart-label"
-                >Title:</label
-              >
-              <input
-                type="text"
-                v-model="form.title"
-                required
-              class="standart-input"/>
-            </div>
-            <div class="mb-4">
-              <label for="comment" class="standart-label"
-                >Comment:</label
-              >
-              <textarea
-                v-model="form.comment"
-              class="standart-input"></textarea>
-            </div>
-            <PrimaryButton>Submit Rating</PrimaryButton>
-          </form>
+  <div  >
+
+
+
+<RatingForm
+v-if="!hasUserRated"
+:form="form"
+:productId="product.id"
+@submit="submitRating"
+/>
+        
+  </div>
         </div>
       </div>
     <!-- </div> -->
@@ -78,8 +65,8 @@ import { ref, computed } from "vue";
 import { router } from "@inertiajs/vue3";
 import { defineProps } from "vue";
 import NavigationLayout from     "@/Layouts/NavigationLayout.vue";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
-import StarRating from "@/Components/StarRating.vue";
+import StarRating from "@/Components/Rating/StarRating.vue";
+import RatingForm from "@/Components/Rating/RatingForm.vue";
 
 defineOptions({
   layout: NavigationLayout,
@@ -107,22 +94,40 @@ form.value.rating = star;
 
 const user = computed(() => props.auth.user);
 const userId = computed(() => user.value.id);
-
+const isEditing = ref(false);
 const hasUserRated = computed(() => {
   return props.ratings.some((rating) => rating.user_id === userId.value);
 });
 
+
 const submitRating = () => {
-  router
-      .post(`/products/${props.product.id}/ratings`, form.value)
-      .then(() => {
-          form.value.rating = 1;
-          form.value.title = "";
-          form.value.comment = "";
-      });
+    if (isEditing.value) {
+        router.put(`/ratings/${form.value.id}`, form.value).then(() => {
+            isEditing.value = false;
+            resetForm();
+        });
+    } else {
+        router.post(`/products/${props.product.id}/ratings`, form.value).then(() => {
+            resetForm();
+        });
+    }
 };
 
 const deleteRating = (ratingId) => {
   router.delete(`/ratings/${ratingId}`);
 };
+
+const editRating = (rating) => {
+  isEditing.value = true;
+  form.value.rating = rating.rating;
+  form.value.title = rating.title;
+  form.value.comment = rating.comment;
+};
+
+const resetForm = () => {
+  form.value.rating = 1;
+  form.value.title = "";
+  form.value.comment = "";
+};
+
 </script>
