@@ -90,21 +90,20 @@ const submitRating = () => {
   if (isEditing.value) {
       router.put(`/ratings/${form.value.id}`, form.value).then(() => {
           isEditing.value = false;
-          resetForm();
-      });
+
+      });          
   } else {
       router
           .post(`/products/${props.product.id}/ratings`, form.value)
           .then(() => {
               isEditing.value = false;
-              resetForm();
+
           });
   }
 };
 
 const deleteRating = (ratingId) => {
   router.delete(`/ratings/${ratingId}`);
-  resetForm()
 };
 
 const editRating = (rating) => {
@@ -115,10 +114,5 @@ const editRating = (rating) => {
   form.value.id = rating.id; 
 };
 
-const resetForm = () => {
-  form.value.rating = 1;
-  form.value.title = "";
-  form.value.comment = "";
-  delete form.value.id;
-};
+
 </script>
