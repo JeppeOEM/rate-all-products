@@ -12,7 +12,6 @@ class RatingController extends Controller
   
     public function store(Request $request, Product $product)
     {
-        // dd($request);
         $request->validate([
             'rating' => 'required|integer|min:1|max:6',
             'title' => 'required|string',
@@ -39,11 +38,11 @@ class RatingController extends Controller
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 
-        // $request->validate([
-        //     'rating' => 'required|integer|min:1|max:6',
-        //     'title' => 'required|string',
-        //     'comment' => 'required|string'
-        // ]);
+        $request->validate([
+            'rating' => 'required|integer|min:1|max:6',
+            'title' => 'required|string',
+            'comment' => 'required|string'
+        ]);
 
         $rating->rating = $request->input('rating');
         $rating->comment = $request->input('comment');
@@ -54,11 +53,7 @@ class RatingController extends Controller
         return back()->with([
             'success' => 'Rating updated successfully'
         ]); 
-        // return inertia('Product/Show', [
-        //     'product' => $rating->product,
-        //     'ratings' => $rating->product->ratings,
-        //     'success' => 'Rating updated successfully'
-        // ]);
+
     }
 
 
