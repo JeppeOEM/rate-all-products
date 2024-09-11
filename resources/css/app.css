@@ -43,7 +43,7 @@
 }
 
 .custom-border {
-    @apply rounded-xl shadow-md;
+    @apply rounded-lg shadow-md;
 }
 
 .black-button {

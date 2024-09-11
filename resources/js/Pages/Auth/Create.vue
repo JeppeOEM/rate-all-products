@@ -2,7 +2,7 @@
   <Head title="Create User" />
 
   <main class="grid place-items-center h-screen -m-10">
-    <section class="bg-white p-8 rounded-xl max-w-md mx-auto border w-full">
+    <section class="bg-white p-8 rounded-lg max-w-md mx-auto border w-full">
       <h1 class="text-3xl mb-6">Create New User</h1>
 
       <form @submit.prevent="submit" method="POST">
