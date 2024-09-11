@@ -25,15 +25,29 @@
 }
 
 .standart-input {
-@apply pl-1 py-3 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm;
-
-
+    @apply pl-1 py-3 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm;
 }
 
 .standart-label {
-   @apply block text-sm font-medium text-gray-700;
+    @apply block text-lg font-medium text-white;
 }
 
 .headline {
-    @apply text-3xl
-}                    
+    @apply text-3xl;
+}
+
+.main-layout-padding {
+    @apply p-4;
+}
+/* make dobble to match main layout */
+.main-layout-nav {
+    @apply px-8;
+}
+
+.custom-outline {
+    @apply outline outline-1;
+}
+
+.black-button {
+    @apply inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150;
+}

@@ -1,5 +1,7 @@
 <template>
-  <div class="container mx-auto p-4">
+  <div class="container mx-auto main-layout-padding">
+    <div class="main-layout-padding">
+
           <h1 class="text-2xl font-bold mb-4">{{ product.description }}</h1>
           <p class="text-lg font-semibold mb-2">
               Price: {{ product.price }} {{ product.currency }}
@@ -10,7 +12,7 @@
 
                <span>{{ displayAvgRating }}</span>
 
-      <div class="bg-white shadow-md rounded-lg p-6">
+      <div class=" mt-4">
           <h2 class="text-xl font-bold mt-6 mb-4">Ratings</h2>
           <ul class="space-y-4">
               <li
@@ -35,7 +37,7 @@
           <form
               v-if="!hasUserRated"
               @submit.prevent="submitRating"
-              class="mt-6 bg-gray-50 p-4 rounded-lg shadow-md"
+              class="mt-6 bg-gray-600 p-4 border"
           >
               <div class="mb-4">
                   <label
@@ -68,6 +70,7 @@
               </div>
               <PrimaryButton>Submit Rating</PrimaryButton>
           </form>
+      </div>
       </div>
   </div>
 </template>

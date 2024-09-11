@@ -1,8 +1,8 @@
 <template>
     <Head title="All products" />
 
-    <div>
-        <div class="flex flex-row justify-between pt-4">
+    <div class="main-layout-padding">
+        <div class="flex flex-row justify-between">
             <h1 class="headline p-4">All products</h1>
             <SearchBar>
                 
@@ -10,7 +10,7 @@
 
         </div>
         <div
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0 p-4"
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0 main-layout-padding"
         >
         <ProductListItem
                 v-for="product in products.data"

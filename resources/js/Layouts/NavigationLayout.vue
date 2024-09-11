@@ -4,7 +4,7 @@
         <title>Product ratings</title>
     </Head>
     <section class="p-5 bg-white fixed top-0 w-full flex justify-center border-bottom border-b-2 border-slate-400">
-        <header class="px-4 flex justify-between items-center w-full max-w-screen-xl">
+        <header class="main-layout-nav flex justify-between items-center w-full max-w-screen-xl">
             <div class="flex items-center">
                 <nav class="flex space-x-4">
                     <NavLink
@@ -49,7 +49,7 @@
         </header>
     </section>
 
-    <section class="flex justify-center h-full">
+    <section class="flex justify-center min-h-screen h-full">
         <main class="main-content w-full max-w-screen-xl border bg-slate-100">
 
             <slot />
