@@ -63,6 +63,7 @@ class XmlFileHandlerSoapPrefix extends FileHandler implements FileHandlerInterfa
                     'discount' => $row['Discount'] ?? 0,
                     'currency' => $row['Currency'] ?? 'DKK',
                     'visible' => $row['Visible_on_Web'] ?? false,
+                    'alcohol_pct' =>$row['Alc_Percent'] ?? 0
                 ]);
 
                 $product->save();

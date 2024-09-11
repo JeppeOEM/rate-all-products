@@ -22,6 +22,7 @@ class Product extends Model
         'discount',
         'currency',
         'visible',
+        'alcohol_pct',
         'created_at',
         'updated_at'
     ];
