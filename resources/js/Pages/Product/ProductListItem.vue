@@ -13,15 +13,12 @@
             />
             <div class="p-4 flex flex-col flex-grow justify-between">
                 <div>
-                    <h2 class="text-xl font-semibold text-gray-800">
-                        {{ product.title }}
-                    </h2>
-                    <p class="text-gray-600 mt-2">
+                    <h2 class="text-xl  text-black">
                         {{ product.description }}
-                    </p>
+                    </h2>
                 </div>
                 <div class="flex items-center justify-between mt-4">
-                    <span class="text-gray-800 font-bold text-lg">
+                    <span class="text-black font-bold text-lg">
                         {{ product.price }}
                         <span class="text-grey-400">kr</span>
                     </span>

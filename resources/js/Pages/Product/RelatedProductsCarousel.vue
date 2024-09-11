@@ -1,5 +1,5 @@
 <template>
-    <div class="relative bg-gray-800 p-6 rounded-lg">
+    <div class="relative bg-blue-800 p-6 rounded-lg">
         <h2 class="text-2xl font-bold text-white mb-4">Related Products</h2>
         <div class="relative overflow-hidden">
             <button

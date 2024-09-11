@@ -21,19 +21,20 @@
 }
 
 .hover-highlight {
-    @apply hover:bg-slate-200 transition duration-300 ease-in-out cursor-pointer;
+    @apply hover:bg-zinc-200 transition duration-300 ease-in-out cursor-pointer;
 }
 
 
 
 .headline {
-    @apply text-3xl;
+    @apply text-4xl;
 }
+
 
 .main-layout-padding {
     @apply p-10;
 }
-/* make dobble to match main layout */
+
 .main-layout-nav {
     @apply px-10;
 }

@@ -4,7 +4,7 @@
         <title>Product ratings</title>
     </Head>
     <section
-        class="z-10 p-5 bg-white fixed top-0 w-full flex justify-center border-bottom border-b-2 border-slate-400"
+        class="z-10 p-5 bg-indigo-800 fixed top-0 w-full flex justify-center border-bottom border-b-2"
     >
         <header
             class="z-10 main-layout-nav flex justify-between items-center w-full max-w-screen-xl"

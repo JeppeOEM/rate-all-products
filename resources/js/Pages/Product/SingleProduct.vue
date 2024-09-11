@@ -8,7 +8,7 @@
       </p> 
 
 
-      <p class="text-xl"v-if="displayAlcoholPct">{{product.alcohol_pct}} %</p>
+      <p class="text-xl mb-2"v-if="displayAlcoholPct">Alcohol: {{product.alcohol_pct}} %</p>
 
       <span class="text-xl mb-2">Average Rating: </span>
       <span class="text-xl">{{ displayAvgRating }}</span>
@@ -16,7 +16,7 @@
       <RelatedProductsCarousel :relatedProducts="related_products"/>
       </div>
       <div class="mt-4">
-          <h2 class="text-xl font-bold mt-6 mb-4">Ratings</h2>
+          <h2 class="text-4xl mt-6 mb-4">Ratings</h2>
           <section class="space-y-4">
               <article
                   v-for="rating in ratings"

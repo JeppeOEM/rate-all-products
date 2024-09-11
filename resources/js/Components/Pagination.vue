@@ -7,8 +7,8 @@
             :class="[
                 'p-1',
                 {
-                    'text-lg text-blue-700 underline font-bold': link.active,
-                    'text-lg hover:text-blue-700 ': !link.active,
+                    'text-lg text-indigo-800 underline font-bold': link.active,
+                    'text-lg hover:text-indigo-800 ': !link.active,
                 },
             ]"
         />

@@ -18,12 +18,12 @@
                 :product="product"
             />
         </div>
-        <div class="flex flex-row justify-center items-center pb-8 pt-4">
+        <div class="flex flex-row justify-center items-center py-8">
             <Pagination :links="products.links" />
         </div>
     </div>
 </template>
-
+   
 <script setup>
 import { Head } from "@inertiajs/vue3";
 import NavigationLayout from "@/Layouts/NavigationLayout.vue";

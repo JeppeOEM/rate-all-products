@@ -4,7 +4,7 @@
             v-model="search"
             type="text"
             placeholder="Search products"
-            class="border border-black p-2 pl-10 rounded-xl focus:border-blue-500 focus:outline-none"
+            class="border-2 border-black p-2 pl-10 rounded-xl focus:border-indigo-800 focus:outline-none"
         />
         <img
             src="/icons8-search.svg"
@@ -26,7 +26,7 @@ watch(search, (value) => {
         { search: value },
         {
             preserveState: true,
-            replace: true,
+            replace: true,  
         }
     );
 });
