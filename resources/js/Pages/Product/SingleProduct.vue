@@ -12,7 +12,9 @@
 
       <span class="text-xl mb-2">Average Rating: </span>
       <span class="text-xl">{{ displayAvgRating }}</span>
-
+      <div v-if="hasRelatedProducts">
+      <RelatedProductsCarousel :relatedProducts="related_products"/>
+      </div>
       <div class="mt-4">
           <h2 class="text-xl font-bold mt-6 mb-4">Ratings</h2>
           <section class="space-y-4">
@@ -62,6 +64,7 @@ import { defineProps } from "vue";
 import NavigationLayout from "@/Layouts/NavigationLayout.vue";
 import StarRating from "@/Components/Rating/StarRating.vue";
 import RatingForm from "@/Components/Rating/RatingForm.vue";
+import RelatedProductsCarousel from "./RelatedProductsCarousel.vue";
 
 defineOptions({
   layout: NavigationLayout,
@@ -73,21 +76,7 @@ const props = defineProps({
   auth: Object,
   avg_rating: Number,
   errors: Object,
-});
-
-
-const displayAlcoholPct = computed(() => !!props.product.alcohol_pct);
-
-const displayAvgRating = computed(() => {
-    return props.avg_rating !== null && props.avg_rating !== undefined
-        ? props.avg_rating
-        : "Rating not set";
-});
-
-const pageTitle = computed(() => {
-    return props.product.description
-        ? `${props.product.description}`
-        : "Product Details";
+  related_products: Array
 });
 
 const form = ref({
@@ -103,6 +92,26 @@ const editingRatingId = ref(null);
 const hasUserRated = computed(() => {
     return props.ratings.some((rating) => rating.user_id === userId.value);
 });
+
+const hasRelatedProducts = computed(() => {
+    return props.related_products.length > 3;
+});
+
+const displayAlcoholPct = computed(() => !!props.product.alcohol_pct);
+
+const displayAvgRating = computed(() => {
+    return props.avg_rating !== null && props.avg_rating !== undefined
+        ? props.avg_rating
+        : "Rating not set";
+});
+
+const pageTitle = computed(() => {
+    return props.product.description
+        ? `${props.product.description}`
+        : "Product Details";
+});
+
+
 
 const submitRating = () => {
     if (isEditing.value) {

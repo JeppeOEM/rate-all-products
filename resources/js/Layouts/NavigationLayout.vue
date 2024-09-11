@@ -4,10 +4,10 @@
         <title>Product ratings</title>
     </Head>
     <section
-        class="p-5 bg-white fixed top-0 w-full flex justify-center border-bottom border-b-2 border-slate-400"
+        class="z-10 p-5 bg-white fixed top-0 w-full flex justify-center border-bottom border-b-2 border-slate-400"
     >
         <header
-            class="main-layout-nav flex justify-between items-center w-full max-w-screen-xl"
+            class="z-10 main-layout-nav flex justify-between items-center w-full max-w-screen-xl"
         >
             <div class="flex items-center">
                 <nav class="flex space-x-4">
@@ -50,7 +50,7 @@
     </section>
 
     <section class="flex justify-center min-h-screen h-full">
-        <main class="main-content w-full max-w-screen-xl border bg-slate-100">
+        <main class="main-content w-full max-w-screen-xl ">
             <slot />
         </main>
     </section>

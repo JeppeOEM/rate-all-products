@@ -35,10 +35,22 @@ class ProductController extends Controller
     {
 
         $product->load('ratings');
+
+
+        $firstWord = strtok($product->description, ' ');
+
+        $relatedProducts = Product::query()
+        ->where('shop_id', $product->shop_id)
+        ->where('product_type', 'simple')
+        ->where('id', '!=', $product->id) 
+        ->whereRaw('substr(description, 1, instr(description || " ", " ") - 1) = ?', [$firstWord])
+        ->get();
+
         return inertia('Product/SingleProduct', [
             'product' => $product,
             'ratings' => $product->ratings,
-            'avg_rating' => $product->getAverageRating()
+            'avg_rating' => $product->getAverageRating(),
+            'related_products' => $relatedProducts
         ]);
     }
 }
