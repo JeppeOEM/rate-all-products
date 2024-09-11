@@ -1,14 +1,16 @@
 <template>
   <div class="container mx-auto p-4">
-      <div class="bg-white shadow-md rounded-lg p-6">
           <h1 class="text-2xl font-bold mb-4">{{ product.description }}</h1>
           <p class="text-lg font-semibold mb-2">
               Price: {{ product.price }} {{ product.currency }}
           </p>
-          <p class="text-lg font-semibold mb-2">
-              Average Rating: {{ avg_rating }}
-          </p>
+          <span class="text-lg font-semibold mb-2">
+           Average Rating:
+          </span>
 
+               <span>{{ displayAvgRating }}</span>
+
+      <div class="bg-white shadow-md rounded-lg p-6">
           <h2 class="text-xl font-bold mt-6 mb-4">Ratings</h2>
           <ul class="space-y-4">
               <li
@@ -74,7 +76,7 @@
 import { ref, computed } from "vue";
 import { router } from "@inertiajs/vue3";
 import { defineProps } from "vue";
-import NavigationLayout from "@/Layouts/NavigationLayout.vue";
+import NavigationLayout from     "@/Layouts/NavigationLayout.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import StarRating from "@/Components/StarRating.vue";
 
@@ -86,9 +88,12 @@ const props = defineProps({
   product: Object,
   ratings: Array,
   auth: Object,
-  avg_rating: Number,
-});
+  avg_rating: Number 
+  });
 
+  const displayAvgRating = computed(() => {
+  return props.avg_rating !== null && props.avg_rating !== undefined ? props.avg_rating : "Rating not set";
+});
 const form = ref({
   rating: 1,
   title: "",

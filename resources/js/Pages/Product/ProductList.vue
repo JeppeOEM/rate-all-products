@@ -3,7 +3,7 @@
 
     <div>
         <div class="flex flex-row justify-between pt-4">
-            <h1 class="text-3xl p-4">All products</h1>
+            <h1 class="headline p-4">All products</h1>
             <SearchBar>
                 
             </SearchBar>
@@ -37,4 +37,3 @@ defineOptions({
 defineProps({ products: Object });
 
 </script>
-// $product = Product::findOrFail($id);

@@ -30,7 +30,10 @@
 
 }
 
-
 .standart-label {
    @apply block text-sm font-medium text-gray-700;
-}  
+}
+
+.headline {
+    @apply text-3xl
+}                    
