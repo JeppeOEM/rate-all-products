@@ -37,7 +37,8 @@ class ProductController extends Controller
         $product->load('ratings');
         return inertia('Product/SingleProduct', [
             'product' => $product,
-            'ratings' => $product->ratings
+            'ratings' => $product->ratings,
+            'avg_rating' => $product->getAverageRating()
         ]);
     }
 }

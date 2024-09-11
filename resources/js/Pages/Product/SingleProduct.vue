@@ -4,6 +4,7 @@
       <p>Price: {{ product.price }}</p>
  
       <h2>Ratings</h2>
+      <p>Avarage rating {{ avg_rating }}</p>
       <ul>
         <li v-for="rating in ratings" :key="rating.id">
           <p>Rating: {{ rating.rating }}</p>
@@ -40,7 +41,8 @@ defineOptions({
   const props = defineProps({
     product: Object,
     ratings: Array,
-    auth: Object
+    auth: Object,
+    avg_rating: Number
   });
   
   const form = ref({
