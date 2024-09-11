@@ -10,7 +10,7 @@
 
         </div>
         <div
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3"
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"
         >
         <ProductListItem
                 v-for="product in products.data"
@@ -18,7 +18,7 @@
                 :product="product"
             />
         </div>
-        <div class="flex flex-row justify-center items-center pb-8">
+        <div class="flex flex-row justify-center items-center pb-8 pt-4">
             <Pagination :links="products.links" />
         </div>
     </div>

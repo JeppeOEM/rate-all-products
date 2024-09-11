@@ -1,6 +1,6 @@
 <template>
     <article
-        class="hover-highlight bg-white overflow-hidden rounded-xl shadow-md flex flex-col justify-between"
+        class="hover-highlight bg-white custom-border flex flex-col justify-between"
     >
         <Link
             :href="`/products/${product.id}`"

@@ -7,19 +7,19 @@
 
       <form @submit.prevent="submit" method="POST">
         <div class="mb-6">
-          <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="email"> Email </label>
+          <label class="standart-label" for="email"> Email </label>
 
-          <input v-model="form.email" class="border p-2 w-full rounded" type="email" name="email" id="email" required />
+          <input v-model="form.email" class="standart-input" type="email" name="email" id="email" required />
 
           <div v-if="form.errors.email" v-text="form.errors.email" class="text-red-500 text-xs mt-1"></div>
         </div>
 
         <div class="mb-6">
-          <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="password"> Password </label>
+          <label class="standart-label" for="password"> Password </label>
 
           <input
             v-model="form.password"
-            class="border p-2 w-full rounded"
+            class="standart-input"
             type="password"
             name="password"
             id="password"
