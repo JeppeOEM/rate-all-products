@@ -12,6 +12,7 @@ class RatingController extends Controller
   
     public function store(Request $request, Product $product)
     {
+        // dd($request);
         $request->validate([
             'rating' => 'required|integer|min:1|max:6',
             'title' => 'required|string',
