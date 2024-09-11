@@ -35,7 +35,6 @@ class ProductController extends Controller
     {
 
         $product->load('ratings');
-        $product->load('ratings');
         return inertia('Product/SingleProduct', [
             'product' => $product,
             'ratings' => $product->ratings

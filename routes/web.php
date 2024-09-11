@@ -1,17 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
-
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\VerifyEmailController;
-use Illuminate\Auth\Events\Login;
-use Inertia\Inertia;
 
 #Login
 Route::get('/login', [LoginController::class, 'create'])->name('login');
@@ -24,7 +20,6 @@ Route::get('/register', function () {
 
 #Users
 Route::post('/users', [UserController::class, 'store']);
-Route::put('/users/{id}', [UserController::class, 'update'])->can('update', 'App\Models\User');
 
 #Email verification
 Route::get('/verify-email', EmailVerificationPromptController::class)
