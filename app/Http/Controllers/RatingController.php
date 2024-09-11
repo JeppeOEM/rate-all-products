@@ -14,14 +14,14 @@ class RatingController extends Controller
     {
         $request->validate([
             'rating' => 'required|integer|min:1|max:6',
-            'comment' => 'string'
+            'title' => 'required|string',
+            'comment' => 'required|string'
         ]);
 
         $rating = new Rating();
         $rating->rating = $request->input('rating');
-        if ($request->has('comment')) {
-            $rating->comment = $request->input('comment');
-        }
+        $rating->comment = $request->input('comment');
+        $rating->title = $request->input('title');
         $rating->user_id = Auth::id();
         $rating->product_id = $product->id;
         $rating->save();
