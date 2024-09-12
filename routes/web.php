@@ -1,17 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
-
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\VerifyEmailController;
-use Illuminate\Auth\Events\Login;
-use Inertia\Inertia;
 
 #Login
 Route::get('/login', [LoginController::class, 'create'])->name('login');
@@ -24,7 +20,6 @@ Route::get('/register', function () {
 
 #Users
 Route::post('/users', [UserController::class, 'store']);
-Route::put('/users/{id}', [UserController::class, 'update'])->can('update', 'App\Models\User');
 
 #Email verification
 Route::get('/verify-email', EmailVerificationPromptController::class)
@@ -42,5 +37,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return inertia('Home');
     });
 
-    Route::get('/product-list', [ProductController::class, 'index'])->name('product.index');
+    Route::get('/products', [ProductController::class, 'index'])->name('product.index');
+    Route::get('/products/{product}', [ProductController::class, 'show'])->name('product.show');
+    Route::post('/products/{product}/ratings', [RatingController::class, 'store'])->name('ratings.store');
+    Route::delete('/ratings/{rating}', [RatingController::class, 'destroy'])->name('ratings.destroy');
+    Route::put('/ratings/{rating}', [RatingController::class, 'update'])->name('ratings.update');
+
 });
