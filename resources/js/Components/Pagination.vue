@@ -18,7 +18,6 @@
 
 <script setup>
 import { Link, Head } from "@inertiajs/vue3";
-import { defineProps } from "vue";
 
 const props = defineProps({
     links: Array,

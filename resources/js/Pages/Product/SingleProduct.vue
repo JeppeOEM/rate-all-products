@@ -65,7 +65,6 @@
 <script setup>
 import { ref, computed } from "vue";
 import { router, Head } from "@inertiajs/vue3";
-import { defineProps } from "vue";
 import NavigationLayout from "@/Layouts/NavigationLayout.vue";
 import StarRating from "@/Components/Rating/StarRating.vue";
 import RatingForm from "@/Components/Rating/RatingForm.vue";
@@ -74,7 +73,6 @@ import RelatedProductsCarousel from "./RelatedProductsCarousel.vue";
 defineOptions({
     layout: NavigationLayout,
 });
-
 const props = defineProps({
     product: Object,
     ratings: Array,

@@ -14,6 +14,7 @@ class ProductController extends Controller
     {
         $products = Product::query()
             ->where('product_type', 'simple')
+            ->where('price', '>', 0) 
             ->when($request->input('search'), function ($query, $search) {
                 $query->where('description', 'like', "%{$search}%");
             })
