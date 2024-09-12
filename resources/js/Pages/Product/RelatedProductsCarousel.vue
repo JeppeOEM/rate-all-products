@@ -34,7 +34,7 @@
 <script setup>
 import { ref } from "vue";
 import { defineProps } from "vue";
-import ProductListItem from "./ProductListItem.vue"; 
+import ProductListItem from "./ProductListItem.vue";
 const props = defineProps({
     relatedProducts: Array,
 });
@@ -53,4 +53,3 @@ const scrollRight = () => {
     }
 };
 </script>
-
