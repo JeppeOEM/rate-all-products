@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class RatingController extends Controller
 {
-  
+
     public function store(Request $request, Product $product)
     {
         $request->validate([
@@ -52,8 +52,7 @@ class RatingController extends Controller
 
         return back()->with([
             'success' => 'Rating updated successfully'
-        ]); 
-
+        ]);
     }
 
 

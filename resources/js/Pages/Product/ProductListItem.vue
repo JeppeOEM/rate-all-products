@@ -13,7 +13,7 @@
             />
             <div class="p-4 flex flex-col flex-grow justify-between">
                 <div>
-                    <h2 class="text-xl  text-black">
+                    <h2 class="text-xl text-black">
                         {{ product.description }}
                     </h2>
                 </div>
@@ -30,7 +30,7 @@
 
 <script setup>
 import { Link } from "@inertiajs/vue3";
-import { defineProps } from 'vue';
+import { defineProps } from "vue";
 
 const props = defineProps({
     product: Object,

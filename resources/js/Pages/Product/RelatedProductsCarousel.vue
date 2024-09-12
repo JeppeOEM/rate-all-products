@@ -10,17 +10,15 @@
             </button>
 
             <div
-                class="flex overflow-x-auto snap-x snap-mandatory"
+                class="grid grid-flow-col auto-cols-max gap-4 overflow-x-auto snap-x snap-mandatory"
                 ref="carousel"
             >
-                <div class="flex">
-                    <div
-                        v-for="relatedProduct in relatedProducts"
-                        :key="relatedProduct.id"
-                        class="flex-none w-72 snap-start mr-4"
-                    >
-                        <ProductListItem :product="relatedProduct" />
-                    </div>
+                <div
+                    v-for="relatedProduct in relatedProducts"
+                    :key="relatedProduct.id"
+                    class="w-72 snap-start"
+                >
+                    <ProductListItem :product="relatedProduct" class="h-full" />
                 </div>
             </div>
             <button
@@ -36,8 +34,7 @@
 <script setup>
 import { ref } from "vue";
 import { defineProps } from "vue";
-import ProductListItem from "./ProductListItem.vue"; // Adjust the path as necessary
-
+import ProductListItem from "./ProductListItem.vue"; 
 const props = defineProps({
     relatedProducts: Array,
 });

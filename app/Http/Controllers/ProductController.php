@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Inertia\Response;
+
 class ProductController extends Controller
 {
 
 
-    public function index(Request $request) : Response
+    public function index(Request $request): Response
     {
         $products = Product::query()
             ->where('product_type', 'simple')
@@ -30,8 +31,8 @@ class ProductController extends Controller
         ]);
     }
 
-    # Sending the model via route model binding
-    public function show(Product $product) : Response
+
+    public function show(Product $product): Response
     {
 
         $product->load('ratings');
@@ -40,11 +41,11 @@ class ProductController extends Controller
         $firstWord = strtok($product->description, ' ');
 
         $relatedProducts = Product::query()
-        ->where('shop_id', $product->shop_id)
-        ->where('product_type', 'simple')
-        ->where('id', '!=', $product->id) 
-        ->whereRaw('substr(description, 1, instr(description || " ", " ") - 1) = ?', [$firstWord])
-        ->get();
+            ->where('shop_id', $product->shop_id)
+            ->where('product_type', 'simple')
+            ->where('id', '!=', $product->id)
+            ->whereRaw('substr(description, 1, instr(description || " ", " ") - 1) = ?', [$firstWord])
+            ->get();
 
         return inertia('Product/SingleProduct', [
             'product' => $product,

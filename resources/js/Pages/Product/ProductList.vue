@@ -2,17 +2,14 @@
     <Head title="All products" />
 
     <div class="main-layout-padding">
-        <div class="flex flex-col  sm:flex-row  justify-between">
+        <div class="flex flex-col sm:flex-row justify-between">
             <h1 class="headline py-4">All products</h1>
-            <SearchBar>
-                
-            </SearchBar>
-
+            <SearchBar> </SearchBar>
         </div>
         <div
             class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"
         >
-        <ProductListItem
+            <ProductListItem
                 v-for="product in products.data"
                 :key="product.id"
                 :product="product"
@@ -23,7 +20,7 @@
         </div>
     </div>
 </template>
-   
+
 <script setup>
 import { Head } from "@inertiajs/vue3";
 import NavigationLayout from "@/Layouts/NavigationLayout.vue";
@@ -35,5 +32,4 @@ defineOptions({
 });
 
 defineProps({ products: Object });
-
 </script>

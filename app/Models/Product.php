@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -28,7 +29,7 @@ class Product extends Model
     ];
 
 
-    public function ratings() : HasMany
+    public function ratings(): HasMany
     {
         return $this->hasMany(Rating::class);
     }
@@ -37,15 +38,4 @@ class Product extends Model
     {
         return $this->ratings()->avg('rating');
     }
-
-
-    // public function findChildren()
-    // {
-    //     if (is_null($this->parent_id)) {
-    //         throw new Exception('parent_id is null. No children to find.');
-    //     } else {
-    //         self::where('parent_id', $this->parent_id)->get();
-    //     }
-    // }
-
 }
