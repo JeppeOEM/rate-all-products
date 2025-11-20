@@ -1,5 +1,5 @@
-# Laravel product rating application
-Lets users rate and comment and view products,
+### Description
+A product rating app where users can rate, comment and view products.
 ### Features
 - user authentication
 - email verification
