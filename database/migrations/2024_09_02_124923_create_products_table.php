@@ -21,6 +21,7 @@ return new class extends Migration
             $table->decimal('discount')->nullable();
             $table->string('currency', 30);
             $table->boolean('visible');
+            $table->decimal('alcohol_pct',3,2);
             $table->timestamps(); 
             $table->foreign('parent_id')->references('id')->on('products')->onDelete('cascade');
         });
